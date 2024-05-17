@@ -24,4 +24,8 @@ export default {
   margin-bottom: 20px;
   padding: 0;
 }
+
+.topnav button {
+  border-radius: 0px;
+}
 </style>

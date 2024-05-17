@@ -8,6 +8,7 @@
   background-color: #212f3d;
   color: #808b96;
   border: none;
+  border-radius: 17px;
   padding: 15px 20px;
   text-align: center;
   display: inline-block;
