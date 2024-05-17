@@ -41,7 +41,6 @@ export default {
                 alert("Можно брать только положительные числа")
                 return
             }
-            axios.defaults.withCredentials = true
             const resp = await axios.post(`/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
             await this.fetchSymbols()
         },
@@ -56,7 +55,6 @@ export default {
                 alert("Можно продавать только положительные числа")
                 return
             }
-            axios.defaults.withCredentials = true
             const resp = await axios.post(`/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
             await this.fetchSymbols()
         },
