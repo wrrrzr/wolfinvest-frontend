@@ -25,7 +25,7 @@ export default {
     methods: {
         async register() {
             try {
-                await axios.post("http://127.0.0.1:8000/auth/reg", {
+                await axios.post("/auth/reg", {
                     username: this.username, password: this.password,
                 })
             } catch (e) {
@@ -37,7 +37,7 @@ export default {
         },
         async login() {
             try {
-                const resp = await axios.post("http://127.0.0.1:8000/auth/auth", {
+                const resp = await axios.post("/auth/auth", {
                     username: this.username, password: this.password
                 })
                 VueCookies.set("token", resp.data)

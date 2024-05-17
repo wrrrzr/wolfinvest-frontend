@@ -23,8 +23,7 @@ export default {
     },
     methods: {
         async fetchRefills() {
-            axios.defaults.withCredentials = true
-            const resp = await axios.get("http://127.0.0.1:8000/refills/get-my-refills")
+            const resp = await axios.get("/refills/get-my-refills")
             this.refills = resp.data.reverse()
         },
         async takeRefill() {
@@ -37,8 +36,7 @@ export default {
                 alert("Можно брать только положительные числа")
                 return
             }
-            axios.defaults.withCredentials = true
-            const resp = await axios.post(`http://127.0.0.1:8000/refills/take-refill?amount=${amount}`)
+            const resp = await axios.post(`/refills/take-refill?amount=${amount}`)
             await this.fetchRefills()
         },
     },

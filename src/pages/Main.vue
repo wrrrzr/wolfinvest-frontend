@@ -18,8 +18,7 @@ export default {
         }
     },
     async mounted() {
-        axios.defaults.withCredentials = true
-        const resp = await axios.get("http://127.0.0.1:8000/users/me")
+        const resp = await axios.get("/users/me")
         this.id = resp.data.id
         this.balance = resp.data.balance
         this.username = resp.data.username

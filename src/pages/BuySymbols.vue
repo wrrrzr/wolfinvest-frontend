@@ -42,7 +42,7 @@ export default {
                 return
             }
             axios.defaults.withCredentials = true
-            const resp = await axios.post(`http://127.0.0.1:8000/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
+            const resp = await axios.post(`/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
             await this.fetchSymbols()
         },
         async sellSymbol() {
@@ -57,7 +57,7 @@ export default {
                 return
             }
             axios.defaults.withCredentials = true
-            const resp = await axios.post(`http://127.0.0.1:8000/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
+            const resp = await axios.post(`/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
             await this.fetchSymbols()
         },
         async getPrice() {
@@ -72,7 +72,7 @@ export default {
                 return
             }
             axios.defaults.withCredentials = true
-            const resp = await axios.get(`http://127.0.0.1:8000/symbols/get-price?symbol=${symbolName}`)
+            const resp = await axios.get(`/symbols/get-price?symbol=${symbolName}`)
             alert(Number(resp.data) * amount)
         }
     },
