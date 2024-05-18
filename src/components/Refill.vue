@@ -1,5 +1,5 @@
 <template>
-    <div class="div"><p>количество: {{ amount }}</p><p>дата получения: {{ time.toLocaleString("ru-RU") }}</p></div>
+    <div class="div"><b>количество: {{ amount }}</b><br><b>{{ date }}</b></div>
 </template>
 <script>
 export default {
@@ -12,13 +12,20 @@ export default {
             type: Date,
             required: true,
         },
-    }
+    },
+    computed: {
+        date() {
+            return new Date(this.time).toLocaleString("ru-RU")
+        }
+    },
 }
 </script>
 <style scoped>
 .div {
-    width: 50%;
-    background-color: #708090;
-    font-size: 20px;
+    background-color: #808080;
+    font-size: 1.7em;
+    font-family: system-ui;
+    margin: 50px;
+    padding: 10px 1em;
 }
 </style>

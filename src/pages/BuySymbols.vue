@@ -5,17 +5,18 @@
     <MyButton @click="sellSymbol">Продать</MyButton>
     <MyButton @click="getPrice">Узнать цену</MyButton>
     <div>
-        <p v-for="i in symbols">{{ i.code }} {{ i.amount }}</p>
+        <Symbol v-for="i in symbols" :code="i.code" :amount="i.amount"/>
     </div>
 </template>
 <script>
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
+import Symbol from "@/components/Symbol"
 import axios from "axios"
 
 export default {
     components: {
-        MyInput, MyButton,
+        MyInput, MyButton, Symbol,
     },
     data() {
         return {
@@ -26,9 +27,9 @@ export default {
     },
     methods: {
         async fetchSymbols() {
-            axios.defaults.withCredentials = true
-            const resp = await axios.get("http://127.0.0.1:8000/symbols/get-my-symbols")
-            this.symbols = resp.data
+            axios.get("http://127.0.0.1:8000/symbols/get-my-symbols").then(resp => {
+                this.symbols = resp.data
+            })
         },
         async buySymbol() {
             if (this.amount === "") {

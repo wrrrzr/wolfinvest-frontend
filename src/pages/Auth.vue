@@ -23,33 +23,28 @@ export default {
         }
     },
     methods: {
-        async register() {
-            try {
-                await axios.post("/auth/reg", {
-                    username: this.username, password: this.password,
-                })
-            } catch (e) {
+        register() {
+            axios.post("/auth/reg", {
+                username: this.username, password: this.password,
+            }).catch(e => {
                 if (e.response.status == 400) {
                     alert("Данный юзернейм уже занят")
-                    return
                 }
-            }
+            })
         },
-        async login() {
-            try {
-                const resp = await axios.post("/auth/auth", {
-                    username: this.username, password: this.password
-                })
+        login() {
+            axios.post("/auth/auth", {
+                username: this.username, password: this.password
+            }).then(resp => {
                 VueCookies.set("token", resp.data)
                 this.$router.push('/')
-            } catch (e) {
+            }).catch(e => {
                 if (e.response.status == 400) {
                     alert("Неправильный юзернейм или пароль")
-                    return
                 }
-            }
-        },
-    }
+            })
+        }
+    },
 }
 </script>
 <style scoped>
