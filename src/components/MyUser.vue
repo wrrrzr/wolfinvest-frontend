@@ -3,7 +3,7 @@
         <div class="container">
         <h4><b>{{ username }}</b></h4>
         <p>id: {{ id }}</p>
-        <p>balance: {{ balance }}</p>
+        <p>баланс: {{ balance.toFixed(2) }}</p>
         </div>
     </div>
 </template>

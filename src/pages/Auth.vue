@@ -1,9 +1,9 @@
 <template>
 <div class="login">
-    <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="username"/>
-    <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="password"/>
-    <MyButton @click="login" style="margin-right: 60px">log in</MyButton>
-    <MyButton @click="register">register</MyButton>
+    <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="юзернейм"/>
+    <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль"/>
+    <MyButton @click="login" style="margin-bottom: 10px">войти</MyButton>
+    <MyButton @click="register">зарегистрироваться</MyButton>
 </div>
 </template>
 <script>
@@ -23,33 +23,32 @@ export default {
         }
     },
     methods: {
-        register() {
-            axios.post("/auth/reg", {
-                username: this.username, password: this.password,
-            }).catch(e => {
+        async register() {
+            try {
+                await axios.post("/auth/reg", { username: this.username, password: this.password })
+            } catch (e) {
                 if (e.response.status == 400) {
                     alert("Данный юзернейм уже занят")
                 }
-            })
+            }
         },
-        login() {
-            axios.post("/auth/auth", {
-                username: this.username, password: this.password
-            }).then(resp => {
+        async login() {
+            try {
+                const resp = await axios.post("/auth/auth", { username: this.username, password: this.password })
                 VueCookies.set("token", resp.data)
                 this.$router.push('/')
-            }).catch(e => {
+            } catch(e) {
                 if (e.response.status == 400) {
                     alert("Неправильный юзернейм или пароль")
                 }
-            })
+            }
         }
     },
 }
 </script>
 <style scoped>
 .login {
-    width: 325px;
+    width: 300px;
     margin: auto;
     padding: 40px;
     background: #708090;

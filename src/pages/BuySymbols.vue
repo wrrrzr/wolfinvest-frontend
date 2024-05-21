@@ -27,9 +27,8 @@ export default {
     },
     methods: {
         async fetchSymbols() {
-            axios.get("http://127.0.0.1:8000/symbols/get-my-symbols").then(resp => {
-                this.symbols = resp.data
-            })
+            const resp = await axios.get("/symbols/get-my-symbols")
+            this.symbols = resp.data
         },
         async buySymbol() {
             if (this.amount === "") {
@@ -70,7 +69,6 @@ export default {
                 alert("Можно брать только положительные числа")
                 return
             }
-            axios.defaults.withCredentials = true
             const resp = await axios.get(`/symbols/get-price?symbol=${symbolName}`)
             alert(Number(resp.data) * amount)
         }
