@@ -44,6 +44,11 @@ export default {
             }
         }
     },
+    beforeMount() {
+        if (VueCookies.isKey("token")) {
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 <style scoped>
