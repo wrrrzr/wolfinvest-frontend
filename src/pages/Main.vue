@@ -1,13 +1,15 @@
 <template>
     <MyUser :id="id" :balance="balance" :username="username" v-if="!isLoading"></MyUser>
+    <ListSymbols/>
 </template>
 <script>
-import MyUser from '@/components/MyUser'
-import axios from 'axios'
+import MyUser from "@/components/MyUser"
+import ListSymbols from "@/components/ListSymbols"
+import axios from "axios"
 
 export default {
     components: {
-        MyUser,
+        MyUser, ListSymbols,
     },
     data() {
         return {

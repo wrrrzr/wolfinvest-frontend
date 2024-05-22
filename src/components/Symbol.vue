@@ -1,7 +1,9 @@
 <template>
     <div class="card">
         <div class="container">
-            <h4><b>{{ code }}: {{ amount }}</b></h4>
+            <p><b>{{ code }}</b></p>
+            <p>количество: {{ amount }}</p>
+            <p>цена: {{ priceOne.toFixed(2) }}</p>
         </div>
     </div>
 </template>
@@ -16,6 +18,10 @@ export default {
             type: Number,
             required: true,
         },
+        priceOne: {
+            type: Number,
+            required: true,
+        },
     },
 }
 </script>
@@ -23,10 +29,9 @@ export default {
 .card {
   transition: 0.4s;
   background-color: #808080;
-  font-size: 26px;
+  font-size: 24px;
   font-family: 'Lucida Handwriting';
-  margin: 25px;
-  border-radius: 7px;
+  margin: 1%;
 }
 
 .card:hover {
@@ -35,5 +40,9 @@ export default {
 
 .container {
   padding: 1px 16px;
+}
+
+.card p {
+  margin: 0.3em;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
     <div class="card">
         <div class="container">
-        <h4><b>{{ username }}</b></h4>
-        <p>id: {{ id }}</p>
-        <p>баланс: {{ balance.toFixed(2) }}</p>
+            <p><b>{{ username }}</b></p>
+            <p>id: {{ id }}</p>
+            <p>баланс: {{ balance.toFixed(2) }}</p>
         </div>
     </div>
 </template>
@@ -28,13 +28,18 @@ export default {
 <style scoped>
 .card {
   background-color: #808080;
-  width: 300px;
-  font-size: 26px;
+  font-size: 24px;
   font-family: 'Lucida Handwriting';
+  width: 300px;
   border-radius: 15px;
+  margin: 1%;
 }
 
 .container {
-  padding: 2px 16px;
+  padding: 20px 16px;
+}
+
+.container p {
+  margin: 3%;
 }
 </style>

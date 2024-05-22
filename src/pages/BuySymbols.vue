@@ -4,9 +4,6 @@
     <MyButton @click="buySymbol">Купить</MyButton>
     <MyButton @click="sellSymbol">Продать</MyButton>
     <MyButton @click="getPrice">Узнать цену</MyButton>
-    <div>
-        <Symbol v-for="i in symbols" :code="i.code" :amount="i.amount"/>
-    </div>
 </template>
 <script>
 import MyInput from "@/components/UI/MyInput"
@@ -22,14 +19,9 @@ export default {
         return {
             symbolName: "",
             amount: 0,
-            symbols: []
         }
     },
     methods: {
-        async fetchSymbols() {
-            const resp = await axios.get("/symbols/get-my-symbols")
-            this.symbols = resp.data
-        },
         async buySymbol() {
             if (this.amount === "") {
                 alert("Можно вводить только число")
@@ -42,7 +34,6 @@ export default {
                 return
             }
             const resp = await axios.post(`/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
-            await this.fetchSymbols()
         },
         async sellSymbol() {
             if (this.amount === "") {
@@ -56,7 +47,6 @@ export default {
                 return
             }
             const resp = await axios.post(`/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
-            await this.fetchSymbols()
         },
         async getPrice() {
             if (this.amount === "") {
@@ -73,9 +63,6 @@ export default {
             alert(Number(resp.data) * amount)
         }
     },
-    async mounted() {
-        await this.fetchSymbols()
-    }
 }
 </script>
 <style scoped>

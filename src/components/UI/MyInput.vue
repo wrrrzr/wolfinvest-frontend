@@ -10,7 +10,6 @@
   font-family: monospace;
   border: none;
   border-radius: 17px;
-  width: 300px;
 }
 
 input[type=number] { 

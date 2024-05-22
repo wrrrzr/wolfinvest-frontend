@@ -25,7 +25,7 @@ export default {
     background-color: #808080;
     font-size: 1.7em;
     font-family: system-ui;
-    margin: 50px;
+    margin: 2%;
     padding: 10px 1em;
 }
 </style>

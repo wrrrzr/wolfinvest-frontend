@@ -53,7 +53,6 @@ export default {
 </script>
 <style scoped>
 .login {
-    width: 300px;
     margin: auto;
     padding: 40px;
     background: #708090;
