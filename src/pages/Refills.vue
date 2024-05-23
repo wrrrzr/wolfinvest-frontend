@@ -25,9 +25,8 @@ export default {
     },
     methods: {
         async fetchRefills() {
-            axios.get("/refills/get-my-refills").then(resp => {
-                this.refills = resp.data.reverse()
-            })
+            const resp = await axios.get("/refills/get-my-refills")
+            this.refills = resp.data.reverse()
         },
         async takeRefill() {
             if (this.amount === "") {

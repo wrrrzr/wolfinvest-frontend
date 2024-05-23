@@ -14,7 +14,6 @@ axios.interceptors.response.use(response => {
     if (statusCode === 401) {
         VueCookies.remove("token")
         router.push("/auth")
-        return error
     }
     return Promise.reject(error);
 });
