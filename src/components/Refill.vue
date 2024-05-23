@@ -1,8 +1,17 @@
 <template>
-    <div class="div"><b>количество: {{ amount }}</b><br><b>{{ date }}</b></div>
+    <MyCard>
+        <b>количество: {{ amount }}</b>
+        <br>
+        <b>{{ date }}</b>
+    </MyCard>
 </template>
 <script>
+import MyCard from "@/components/UI/MyCard"
+
 export default {
+    components: {
+        MyCard,
+    },
     props: {
         amount: {
             type: Number,
@@ -21,11 +30,7 @@ export default {
 }
 </script>
 <style scoped>
-.div {
-    background-color: #808080;
-    font-size: 1.7em;
-    font-family: system-ui;
-    margin: 2%;
-    padding: 10px 1em;
+.container {
+  display: grid;
 }
 </style>

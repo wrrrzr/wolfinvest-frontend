@@ -1,5 +1,5 @@
 <template>
-    <div style="display: flex; flex-wrap: wrap">
+    <div class="list">
         <Symbol v-for="i in symbols" :code="i.code" :amount="i.amount" :priceOne="i.price"/>
     </div>
 </template>
@@ -27,3 +27,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+.list {
+  display: inline flex;
+  flex-wrap: wrap;
+}
+</style>

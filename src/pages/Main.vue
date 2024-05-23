@@ -1,5 +1,5 @@
 <template>
-    <MyUser :id="id" :balance="balance" :username="username" v-if="!isLoading"></MyUser>
+    <MyUser :id="id" :balance="balance" :username="username"></MyUser>
     <ListSymbols/>
 </template>
 <script>
@@ -16,7 +16,6 @@ export default {
             id: 0,
             balance: 0,
             username: "",
-            isLoading: true,
         }
     },
     async mounted() {
@@ -24,7 +23,6 @@ export default {
         this.id = resp.data.id
         this.balance = resp.data.balance
         this.username = resp.data.username
-        this.isLoading = false
     }
 }
 </script>

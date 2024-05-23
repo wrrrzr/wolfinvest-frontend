@@ -1,6 +1,8 @@
 <template>
-    <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number" style="margin-right: 20px"/>
-    <MyButton @click="takeRefill">Взять пополнение</MyButton>
+    <div class="get-refill">
+        <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number" style="margin-right: 20px"/>
+        <MyButton @click="takeRefill">Взять пополнение</MyButton>
+    </div>
     <div>
         <Refill v-bind:value="refills" v-for="refill in refills" :amount="refill.amount" :time="refill.created_at"></Refill>
     </div>
@@ -46,3 +48,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+.get-refill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
