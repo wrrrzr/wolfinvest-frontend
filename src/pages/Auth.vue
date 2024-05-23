@@ -1,9 +1,11 @@
 <template>
+<div class="container">
 <div class="login">
     <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="юзернейм"/>
     <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль"/>
     <MyButton @click="login" style="margin-bottom: 10px">войти</MyButton>
     <MyButton @click="register">зарегистрироваться</MyButton>
+</div>
 </div>
 </template>
 <script>
@@ -53,11 +55,16 @@ export default {
 </script>
 <style scoped>
 .login {
-    margin: auto;
-    padding: 40px;
-    background: #708090;
-    border-radius: 25px;
-    font-family: 'Helvetica';
-    font-size: 15px;
+  padding: 25px;
+  background: #708090;
+  border-radius: 25px;
+  font-family: 'Helvetica';
+  font-size: 15px;
+  display: inline grid;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
