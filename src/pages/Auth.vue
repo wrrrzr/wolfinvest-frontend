@@ -2,7 +2,7 @@
 <div class="container">
 <div class="login">
     <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="юзернейм"/>
-    <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль"/>
+    <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль" type="password"/>
     <MyButton @click="login" style="margin-bottom: 10px">войти</MyButton>
     <MyButton @click="register">зарегистрироваться</MyButton>
 </div>
