@@ -5,7 +5,7 @@
 </template>
 <script>
 import Symbol from "@/components/Symbol"
-import axios from "axios"
+import api from "@/api"
 
 export default {
     components: {
@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         async fetchSymbols() {
-            const resp = await axios.get("/symbols/get-my-symbols")
+            const resp = await api.get("/symbols/get-my-symbols")
             this.symbols = resp.data
         }
     },

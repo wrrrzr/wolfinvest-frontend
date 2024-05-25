@@ -5,7 +5,7 @@
 <script>
 import MyUser from "@/components/MyUser"
 import ListSymbols from "@/components/ListSymbols"
-import axios from "axios"
+import api from "@/api"
 
 export default {
     components: {
@@ -19,7 +19,7 @@ export default {
         }
     },
     async mounted() {
-        const resp = await axios.get("/users/me")
+        const resp = await api.get("/users/me")
         this.id = resp.data.id
         this.balance = resp.data.balance
         this.username = resp.data.username

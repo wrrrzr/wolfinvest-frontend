@@ -28,6 +28,7 @@ export default {
         async register() {
             try {
                 await axios.post("/auth/reg", { username: this.username, password: this.password })
+                await this.login()
             } catch (e) {
                 if (e.response.status == 400) {
                     alert("Данный юзернейм уже занят")
