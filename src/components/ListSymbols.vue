@@ -4,6 +4,7 @@
     </div>
 </template>
 <script>
+import { mapActions } from "vuex"
 import SymbolInList from "@/components/SymbolInList"
 import api from "@/api"
 
@@ -12,18 +13,15 @@ export default {
         SymbolInList,
     },
     data() {
-        return {
-            symbols: []
-        }
+        return this.$store.state.symbolsList
     },
     methods: {
-        async fetchList() {
-            const resp = await api.get("/symbols/get-list-symbols")
-            this.symbols = resp.data
-        }
+        ...mapActions({
+            fetchSymbols: "symbolsList/fetchSymbols",
+        })
     },
     async mounted() {
-        this.fetchList()
+        await this.fetchSymbols()
     }
 }
 </script>

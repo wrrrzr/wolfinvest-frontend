@@ -8,6 +8,7 @@
     </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Refill from "@/components/Refill"
@@ -20,14 +21,17 @@ export default {
     data() {
         return {
             amount: 0,
-            refills: []
+            refills: [],
         }
     },
     methods: {
-        async fetchRefills() {
-            const resp = await api.get("/refills/get-my-refills")
-            this.refills = resp.data.reverse()
-        },
+        ...mapActions({
+            fetchRefills: "refills/fetchRefills",
+            fetchRefillsWithoutCache: "refills/fetchRefillsWithoutCache",
+        }),
+        ...mapGetters({
+            getReverse: "refills/getReverse",
+        }),
         async takeRefill() {
             if (this.amount === "") {
                 alert("Можно вводить только число")
@@ -39,11 +43,12 @@ export default {
                 return
             }
             const resp = await api.post(`/refills/take-refill?amount=${amount}`)
-            await this.fetchRefills()
+            await this.fetchRefillsWithoutCache()
         },
     },
     async mounted() {
         await this.fetchRefills()
+        this.refills = this.$store.state.refills.refills
     }
 }
 </script>
