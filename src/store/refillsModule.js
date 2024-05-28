@@ -8,7 +8,7 @@ export default {
         }
     },
     getters: {
-        getReverse: (state) => state.refills.reverse()
+        getReverse: (state) => [].concat(state.refills).reverse()
     },
     mutations: {
         setRefills: (state, refills) => { state.refills = refills },

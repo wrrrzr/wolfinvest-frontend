@@ -44,11 +44,12 @@ export default {
             }
             const resp = await api.post(`/refills/take-refill?amount=${amount}`)
             await this.fetchRefillsWithoutCache()
+            this.refills = this.getReverse()
         },
     },
     async mounted() {
         await this.fetchRefills()
-        this.refills = this.$store.state.refills.refills
+        this.refills = this.getReverse()
     }
 }
 </script>
