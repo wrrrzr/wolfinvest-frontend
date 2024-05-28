@@ -4,23 +4,21 @@
     </div>
 </template>
 <script>
+import { mapActions } from "vuex"
 import Symbol from "@/components/Symbol"
 import api from "@/api"
 
 export default {
     components: {
-        Symbol
+        Symbol,
     },
     data() {
-        return {
-            symbols: []
-        }
+        return this.$store.state.mySymbols
     },
     methods: {
-        async fetchSymbols() {
-            const resp = await api.get("/symbols/get-my-symbols")
-            this.symbols = resp.data
-        }
+        ...mapActions({
+            fetchSymbols: "mySymbols/fetchSymbols",
+        })
     },
     async mounted() {
         this.fetchSymbols()
