@@ -7,24 +7,24 @@
 </template>
 <script>
 import MyCard from "@/components/UI/MyCard"
+import api from "@/api"
 
 export default {
     components: {
         MyCard,
     },
-    props: {
-        id: {
-            type: Number,
-            required: true,
-        },
-        balance: {
-            type: Number,
-            required: true,
-        },
-        username: {
-            type: String,
-            required: true,
-        },
+    data() {
+        return {
+            id: 0,
+            balance: 0,
+            username: "",
+        }
     },
+    async mounted() {
+        const resp = await api.get("/users/me")
+        this.id = resp.data.id
+        this.balance = resp.data.balance
+        this.username = resp.data.username
+    }
 }
 </script>

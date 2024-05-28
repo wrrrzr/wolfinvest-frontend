@@ -11,7 +11,7 @@
 <script>
 import MyButton from "@/components/UI/MyButton"
 import MyInput from "@/components/UI/MyInput"
-import axios from "axios"
+import api from "@/api"
 import VueCookies from 'vue-cookies'
 
 export default {
@@ -27,7 +27,7 @@ export default {
     methods: {
         async register() {
             try {
-                await axios.post("/auth/reg", { username: this.username, password: this.password })
+                await api.post("/auth/reg", { username: this.username, password: this.password })
                 await this.login()
             } catch (e) {
                 if (e.response.status == 400) {
@@ -37,7 +37,7 @@ export default {
         },
         async login() {
             try {
-                const resp = await axios.post("/auth/auth", { username: this.username, password: this.password })
+                const resp = await api.post("/auth/auth", { username: this.username, password: this.password })
                 VueCookies.set("token", resp.data)
                 this.$router.push('/')
             } catch(e) {

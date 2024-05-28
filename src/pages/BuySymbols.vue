@@ -4,16 +4,18 @@
     <MyButton @click="buySymbol">Купить</MyButton>
     <MyButton @click="sellSymbol">Продать</MyButton>
     <MyButton @click="getPrice">Узнать цену</MyButton>
+    <ListSymbols/>
 </template>
 <script>
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Symbol from "@/components/Symbol"
-import axios from "axios"
+import ListSymbols from "@/components/ListSymbols"
+import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, Symbol,
+        MyInput, MyButton, Symbol, ListSymbols,
     },
     data() {
         return {
@@ -33,7 +35,7 @@ export default {
                 alert("Можно брать только положительные числа")
                 return
             }
-            const resp = await axios.post(`/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
+            const resp = await api.post(`/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
         },
         async sellSymbol() {
             if (this.amount === "") {
@@ -46,7 +48,7 @@ export default {
                 alert("Можно продавать только положительные числа")
                 return
             }
-            const resp = await axios.post(`/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
+            const resp = await api.post(`/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
         },
         async getPrice() {
             if (this.amount === "") {
@@ -59,7 +61,7 @@ export default {
                 alert("Можно брать только положительные числа")
                 return
             }
-            const resp = await axios.get(`/symbols/get-price?symbol=${symbolName}`)
+            const resp = await api.get(`/symbols/get-price?symbol=${symbolName}`)
             alert(Number(resp.data) * amount)
         }
     },

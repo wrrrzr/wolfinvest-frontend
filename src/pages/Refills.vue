@@ -11,7 +11,7 @@
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Refill from "@/components/Refill"
-import axios from "axios"
+import api from "@/api"
 
 export default {
     components: {
@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         async fetchRefills() {
-            const resp = await axios.get("/refills/get-my-refills")
+            const resp = await api.get("/refills/get-my-refills")
             this.refills = resp.data.reverse()
         },
         async takeRefill() {
@@ -38,7 +38,7 @@ export default {
                 alert("Можно брать только положительные числа")
                 return
             }
-            const resp = await axios.post(`/refills/take-refill?amount=${amount}`)
+            const resp = await api.post(`/refills/take-refill?amount=${amount}`)
             await this.fetchRefills()
         },
     },

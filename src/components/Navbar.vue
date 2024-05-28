@@ -21,7 +21,7 @@ export default {
   background-color: #212f3d;
   overflow: hidden;
   border-radius: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 0.1vw;
   padding: 0;
 }
 

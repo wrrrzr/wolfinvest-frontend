@@ -1,15 +1,15 @@
 <template>
     <div class="list">
-        <SymbolInList v-for="i in symbols" :name="i.name" :code="i.code"/>
+        <Symbol v-for="i in symbols" :code="i.code" :amount="i.amount" :priceOne="i.price"/>
     </div>
 </template>
 <script>
-import SymbolInList from "@/components/SymbolInList"
+import Symbol from "@/components/Symbol"
 import api from "@/api"
 
 export default {
     components: {
-        SymbolInList,
+        Symbol
     },
     data() {
         return {
@@ -17,19 +17,19 @@ export default {
         }
     },
     methods: {
-        async fetchList() {
-            const resp = await api.get("/symbols/get-list-symbols")
+        async fetchSymbols() {
+            const resp = await api.get("/symbols/get-my-symbols")
             this.symbols = resp.data
         }
     },
     async mounted() {
-        this.fetchList()
+        this.fetchSymbols()
     }
 }
 </script>
 <style scoped>
 .list {
-    display: inline flex;
-    flex-wrap: wrap;
+  display: inline flex;
+  flex-wrap: wrap;
 }
 </style>

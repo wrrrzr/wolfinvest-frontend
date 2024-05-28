@@ -2,7 +2,7 @@
     <MyCard>
         <p><b>{{ code }}</b></p>
         <p>количество: {{ amount }}</p>
-        <p>цена: {{ priceOne.toFixed(2) }}</p>
+        <p>цена: {{ (priceOne * amount).toFixed(2) }} ({{ priceOne.toFixed(2) }})</p>
     </MyCard>
 </template>
 <script>

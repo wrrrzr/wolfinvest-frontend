@@ -11,7 +11,7 @@
   background-color: #808080;
   font-size: 24px;
   font-family: 'Lucida Handwriting';
-  margin: 1%;
+  margin: 0.2vw;
   border-radius: 15px;
 }
 
@@ -20,11 +20,11 @@
 }
 
 .container {
-  padding: 1px, 16px;
   display: flex;
 }
 
 .card * {
-  margin: 1%;
+  margin-top: 0;
+  margin-botton: 0;
 }
 </style>
