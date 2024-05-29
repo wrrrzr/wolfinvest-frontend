@@ -5,7 +5,8 @@
 .input {
   background-color: #212f3d;
   color: #808b96;
-  padding: 15px 5px;
+  padding: 14px;
+  text-align: left;
   font-size: 20px;
   font-family: monospace;
   border: none;

@@ -9,11 +9,12 @@
   color: #808b96;
   border: none;
   border-radius: 17px;
-  padding: 15px 5px;
+  padding: 14px;
   text-align: center;
   display: inline-block;
   font-size: 20px;
   font-family: monospace;
+  margin: 5px;
 }
 
 .btn:hover {

@@ -1,6 +1,6 @@
 <template>
     <div class="get-refill">
-        <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number" style="margin-right: 20px"/>
+        <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/>
         <MyButton @click="takeRefill">Взять пополнение</MyButton>
     </div>
     <div>

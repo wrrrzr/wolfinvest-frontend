@@ -1,6 +1,6 @@
 <template>
-    <MyCard>
-        <p>{{ name }} ({{ code }})</p>
+    <MyCard @click="goToBuySymbol">
+        <p style="user-select: none">{{ name }} ({{ code }})</p>
     </MyCard>
 </template>
 <script>
@@ -20,5 +20,10 @@ export default {
             required: true,
         },
     },
+    methods: {
+        goToBuySymbol() {
+            this.$router.push(`/symbol/${this.code}`)
+        }
+    }
 }
 </script>

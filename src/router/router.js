@@ -4,6 +4,7 @@ import Refills from "@/pages/Refills"
 import News from "@/pages/News"
 import About from "@/pages/About"
 import Auth from "@/pages/Auth"
+import SymbolPage from "@/pages/SymbolPage"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 
@@ -37,6 +38,10 @@ const routes = [
         path: '/auth',
         component: Auth,
     },
+    {
+        path: '/symbol/:symbol',
+        component: SymbolPage,
+    }
 ]
 
 const router = createRouter({

@@ -27,5 +27,6 @@ export default {
 
 .topnav button {
   border-radius: 0px;
+  margin: 0px;
 }
 </style>

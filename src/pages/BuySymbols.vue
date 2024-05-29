@@ -1,6 +1,6 @@
 <template>
-    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" placeholder="акция" style="margin-right: 10px"/>
-    <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" style="margin-right: 20px"/> 
+    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" placeholder="акция"/>
+    <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/> 
     <MyButton @click="buySymbol">Купить</MyButton>
     <MyButton @click="sellSymbol">Продать</MyButton>
     <MyButton @click="getPrice">Узнать цену</MyButton>
