@@ -7,27 +7,27 @@
 </template>
 <script>
 import MyCard from "@/components/UI/MyCard"
-import { mapActions } from "vuex"
+import { mapActions, mapState } from "vuex"
 import api from "@/api"
 
 export default {
     components: {
         MyCard,
     },
-    data() {
-        return this.$store.state.user
-    },
     methods: {
         ...mapActions({
             fetchUser: "user/fetchUser",
         })
     },
+    computed: {
+        ...mapState({
+            id: state => state.user.id,
+            balance: state => state.user.balance,
+            username: state => state.user.username,
+        })
+    },
     async mounted() {
         await this.fetchUser()
-        /*const resp = await api.get("/users/me")
-        this.id = resp.data.id
-        this.balance = resp.data.balance
-        this.username = resp.data.username*/
     }
 }
 </script>

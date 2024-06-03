@@ -4,6 +4,29 @@ import router from "@/router/router"
 import VueCookies from 'vue-cookies'
 import api from "@/api"
 import store from "@/store"
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+} from 'chart.js'
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+)
+
+ChartJS.defaults.color = () => "#a17a5a"
+ChartJS.defaults.font.size = 15
 
 api.init()
 

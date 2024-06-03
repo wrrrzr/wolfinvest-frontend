@@ -30,7 +30,7 @@ export default {
                 await api.post("/auth/reg", { username: this.username, password: this.password })
                 await this.login()
             } catch (e) {
-                if (e.response.status == 400) {
+                if (e.response.status === 400) {
                     alert("Данный юзернейм уже занят")
                 }
             }
@@ -41,7 +41,7 @@ export default {
                 VueCookies.set("token", resp.data)
                 this.$router.push('/')
             } catch(e) {
-                if (e.response.status == 400) {
+                if (e.response.status === 400) {
                     alert("Неправильный юзернейм или пароль")
                 }
             }
@@ -62,7 +62,9 @@ export default {
   font-family: 'Helvetica';
   font-size: 15px;
   display: inline grid;
+  margin-top: 15px;
 }
+
 .container {
   display: flex;
   align-items: center;

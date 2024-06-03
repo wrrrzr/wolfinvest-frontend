@@ -19,6 +19,11 @@ export default {
             const resp = await api.get("/symbols/get-my-symbols")
             commit("setSymbols", resp.data)
             commit("trueCached")
+        },
+        async fetchSymbolsWithoutCache({ state, commit }) {
+            const resp = await api.get("/symbols/get-my-symbols")
+            commit("setSymbols", resp.data)
+            commit("trueCached")
         }
     },
     namespaced: true

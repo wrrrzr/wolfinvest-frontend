@@ -11,8 +11,9 @@
   background-color: #808080;
   font-size: 24px;
   font-family: 'Lucida Handwriting';
-  margin: 0.2vw;
-  border-radius: 15px;
+  margin: 5px;
+  border-radius: 17px;
+  padding: 5px;
 }
 
 .card:hover {

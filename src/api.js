@@ -11,9 +11,11 @@ const api = {
         try {
             return await axios.get(url);
         } catch (e) {
-            if (e.response.status == 401) {
+            if (e.response.status === 401) {
                 VueCookies.remove("token");
                 router.go("/auth");
+            } else {
+                throw e
             }
         }
     },
@@ -21,9 +23,11 @@ const api = {
         try {
             return await axios.post(url, params);
         } catch (e) {
-            if (e.response.status == 401) {
+            if (e.response.status === 401) {
                 VueCookies.remove("token");
                 router.go("/auth");
+            } else {
+                throw e
             }
         }
     }

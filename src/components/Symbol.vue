@@ -1,8 +1,8 @@
 <template>
-    <MyCard>
-        <p><b>{{ code }}</b></p>
-        <p>количество: {{ amount }}</p>
-        <p>цена: {{ (priceOne * amount).toFixed(2) }} ({{ priceOne.toFixed(2) }})</p>
+    <MyCard @click="goToBuySymbol">
+        <p style="user-select: none"><b>{{ code }}</b></p>
+        <p style="user-select: none">количество: {{ amount }}</p>
+        <p style="user-select: none">цена: {{ (priceOne * amount).toFixed(2) }} ({{ priceOne.toFixed(2) }})</p>
     </MyCard>
 </template>
 <script>
@@ -26,5 +26,10 @@ export default {
             required: true,
         },
     },
+    methods: {
+        goToBuySymbol() {
+            this.$router.push(`/symbol/${this.code}`)
+        }
+    }
 }
 </script>

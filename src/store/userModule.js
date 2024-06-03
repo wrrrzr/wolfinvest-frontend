@@ -25,6 +25,13 @@ export default {
             commit("setBalance", resp.data.balance)
             commit("setUsername", resp.data.username)
             commit("trueCached")
+        },
+        async fetchUserWithoutCache({ state, commit }) {
+            const resp = await api.get("/users/me")
+            commit("setId", resp.data.id)
+            commit("setBalance", resp.data.balance)
+            commit("setUsername", resp.data.username)
+            commit("trueCached")
         }
     },
     namespaced: true
