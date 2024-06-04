@@ -1,6 +1,7 @@
 <template>
     <MyCard @click="goToBuySymbol">
         <p style="user-select: none">{{ name }} ({{ code }})</p>
+        <p style="user-select: none">цена: {{ price.toFixed(2) }}</p>
     </MyCard>
 </template>
 <script>
@@ -17,6 +18,10 @@ export default {
         },
         code: {
             type: String,
+            required: true,
+        },
+        price: {
+            type: Number,
             required: true,
         },
     },

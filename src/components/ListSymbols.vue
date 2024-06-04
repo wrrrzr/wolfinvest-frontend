@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <SymbolInList v-for="i in symbols" :name="i.name" :code="i.code"/>
+        <SymbolInList v-for="i in symbols" :name="i.name" :code="i.code" :price="i.price"/>
     </div>
 </template>
 <script>
