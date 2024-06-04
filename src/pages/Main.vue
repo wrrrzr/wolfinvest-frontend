@@ -1,15 +1,15 @@
 <template>
-    <MyUser></MyUser>
+    <UserInfo/>
     <ListMySymbols/>
 </template>
 <script>
-import MyUser from "@/components/MyUser"
+import UserInfo from "@/components/UserInfo"
 import ListMySymbols from "@/components/ListMySymbols"
 import api from "@/api"
 
 export default {
     components: {
-        MyUser, ListMySymbols,
+        UserInfo, ListMySymbols,
     },
 }
 </script>

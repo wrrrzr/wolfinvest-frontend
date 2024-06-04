@@ -1,8 +1,6 @@
 <template>
-    <div class="container">
-        <div class="card">
-            <slot></slot>
-        </div>
+    <div class="card">
+        <slot></slot>
     </div>
 </template>
 <style scoped>
@@ -20,12 +18,7 @@
   background-color: #A0A0A0;
 }
 
-.container {
-  display: flex;
-}
-
 .card * {
-  margin-top: 0;
-  margin-botton: 0;
+  margin: 0;
 }
 </style>

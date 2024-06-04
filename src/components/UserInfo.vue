@@ -1,7 +1,6 @@
 <template>
-    <MyCard>
+    <MyCard style="text-align: center; font-size: 1.7em">
         <p><b>{{ username }}</b></p>
-        <p>id: {{ id }}</p>
         <p>баланс: {{ balance.toFixed(2) }}</p>
     </MyCard>
 </template>
