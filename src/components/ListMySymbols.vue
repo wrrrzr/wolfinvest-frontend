@@ -27,7 +27,7 @@ export default {
 </script>
 <style scoped>
 .list {
-  display: inline flex;
+  display: inline-flex;
   flex-wrap: wrap;
 }
 </style>

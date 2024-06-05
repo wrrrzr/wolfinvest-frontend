@@ -7,7 +7,7 @@
 .card {
   transition: 0.4s;
   background-color: #808080;
-  font-size: 24px;
+  font-size: 1.7em;
   font-family: 'Lucida Handwriting';
   margin: 5px;
   border-radius: 17px;

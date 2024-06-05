@@ -60,7 +60,7 @@ export default {
   background: #708090;
   border-radius: 25px;
   font-family: 'Helvetica';
-  font-size: 15px;
+  font-size: 1em;
   display: inline grid;
   margin-top: 15px;
 }

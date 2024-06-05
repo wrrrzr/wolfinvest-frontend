@@ -1,6 +1,6 @@
 <template>
-    <p style="font-size: 30px">Акции компании {{ this.$route.params.symbol }}</p>
-    <b style="font-size: 30px">Цена {{ price.toFixed(2) }}</b>
+    <p style="font-size: 2em">Акции компании {{ this.$route.params.symbol }}</p>
+    <b style="font-size: 2em">Цена {{ price.toFixed(2) }}</b>
     <div class="chart">
         <Chart/>
     </div>
@@ -27,7 +27,7 @@ export default {
     },
     data() {
         return {
-            amount: 0,
+            amount: NaN,
             price: 0,
             symbol: this.$route.params.symbol,
         }

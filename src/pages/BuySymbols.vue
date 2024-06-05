@@ -69,7 +69,7 @@ export default {
 </script>
 <style scoped>
 p {
-    font-size: 30px;
+    font-size: 2em;
     font-family: "Gill Sans", sans-serif;
 }
 </style>

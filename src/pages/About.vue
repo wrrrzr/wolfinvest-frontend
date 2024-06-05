@@ -5,7 +5,7 @@
 <style scoped>
 p {
   font-family: monospace;
-  font-size: 30px;
+  font-size: 2em;
   margin: 0;
   margin-left: 10px;
 }

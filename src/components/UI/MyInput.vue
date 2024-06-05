@@ -7,7 +7,7 @@
   color: #808b96;
   padding: 14px;
   text-align: left;
-  font-size: 20px;
+  font-size: 1.6em;
   font-family: monospace;
   border: none;
   border-radius: 17px;

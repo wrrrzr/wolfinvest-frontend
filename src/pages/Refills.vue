@@ -20,7 +20,7 @@ export default {
     },
     data() {
         return {
-            amount: 0,
+            amount: NaN,
             refills: [],
         }
     },
@@ -28,6 +28,7 @@ export default {
         ...mapActions({
             fetchRefills: "refills/fetchRefills",
             fetchRefillsWithoutCache: "refills/fetchRefillsWithoutCache",
+            fetchUserWithoutCache: "user/fetchUserWithoutCache",
         }),
         ...mapGetters({
             getReverse: "refills/getReverse",
@@ -44,6 +45,7 @@ export default {
             }
             const resp = await api.post(`/refills/take-refill?amount=${amount}`)
             await this.fetchRefillsWithoutCache()
+            await this.fetchUserWithoutCache()
             this.refills = this.getReverse()
         },
     },

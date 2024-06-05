@@ -12,7 +12,7 @@
   padding: 14px;
   text-align: center;
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.6em;
   font-family: monospace;
   margin: 5px;
 }
