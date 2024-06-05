@@ -1,12 +1,13 @@
 <template>
     <MyCard>
-        <b>количество: {{ amount }}</b>
+        <b>количество: {{ floatToCash(amount) }}</b>
         <br>
         <b>{{ date }}</b>
     </MyCard>
 </template>
 <script>
 import MyCard from "@/components/UI/MyCard"
+import { floatToCash } from "@/funcs"
 
 export default {
     components: {
@@ -26,6 +27,9 @@ export default {
         date() {
             return new Date(this.time).toLocaleString("ru-RU")
         }
+    },
+    methods: {
+        floatToCash,
     },
 }
 </script>

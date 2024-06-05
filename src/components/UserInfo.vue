@@ -1,10 +1,10 @@
 <template>
     <MyCard style="text-align: center; font-size: 1.5em; font-family: sans-serif">
         <p><b>{{ username }}</b></p>
-        <p>счёт: {{ balance.toFixed(2) }}</p>
-        <p>итого: {{ totalBalance.toFixed(2) }}</p>
+        <p>счёт: {{ floatToCash(balance) }}</p>
+        <p>итого: {{ floatToCash(totalBalance) }}</p>
         <div style="display: inline-flex; justify-content: space-between; font-size: 0.8em">
-            <p :class="isEarn ? 'earn' : 'notearn'">{{ totalEarn.absolute.toFixed(2) }} · {{ totalEarn.percent.toFixed(2) }}%</p>
+            <p :class="isEarn ? 'earn' : 'notearn'">{{ floatToCash(totalEarn.absolute) }} · {{ totalEarn.percent.toFixed(2) }}%</p>
             <p style="font-size: 0.9em">за всё время</p>
         </div>
     </MyCard>
@@ -12,6 +12,7 @@
 <script>
 import MyCard from "@/components/UI/MyCard"
 import { mapActions, mapState } from "vuex"
+import { floatToCash } from "@/funcs"
 import api from "@/api"
 
 export default {
@@ -23,7 +24,8 @@ export default {
             fetchUser: "user/fetchUser",
             fetchRefills: "refills/fetchRefills",
             fetchSymbols: "mySymbols/fetchSymbols",
-        })
+        }),
+        floatToCash
     },
     computed: {
         ...mapState({

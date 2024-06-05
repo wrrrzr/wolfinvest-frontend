@@ -1,6 +1,6 @@
 <template>
     <p style="font-size: 2em">Акции компании {{ this.$route.params.symbol }}</p>
-    <b style="font-size: 2em">Цена {{ price.toFixed(2) }}</b>
+    <b style="font-size: 2em">Цена {{ floatToCash(price) }}</b>
     <div class="chart">
         <Chart/>
     </div>
@@ -20,6 +20,7 @@ import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Chart from "@/components/Chart"
 import api from "@/api"
+import { floatToCash } from "@/funcs"
 
 export default {
     components: {
@@ -87,6 +88,7 @@ export default {
             await this.fetchSymbolsWithoutCache()
             await this.fetchUserWithoutCache()
         },
+        floatToCash,
     },
     async mounted() {
         const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)

@@ -2,11 +2,12 @@
     <MyCard @click="goToBuySymbol">
         <p style="user-select: none"><b>{{ code }}</b></p>
         <p style="user-select: none">количество: {{ amount }}</p>
-        <p style="user-select: none">цена: {{ (priceOne * amount).toFixed(2) }} ({{ priceOne.toFixed(2) }})</p>
+        <p style="user-select: none">цена: {{ floatToCash(priceOne * amount) }} ({{ floatToCash(priceOne) }})</p>
     </MyCard>
 </template>
 <script>
 import MyCard from "@/components/UI/MyCard"
+import { floatToCash } from "@/funcs"
 
 export default {
     components: {
@@ -29,7 +30,8 @@ export default {
     methods: {
         goToBuySymbol() {
             this.$router.push(`/symbol/${this.code}`)
-        }
+        },
+        floatToCash,
     }
 }
 </script>
