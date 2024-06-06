@@ -1,8 +1,8 @@
 <template>
-    <p style="font-size: 2em">Акции компании {{ this.$route.params.symbol }}</p>
+    <p style="font-size: 2em">Акции компании {{ $route.params.symbol }}</p>
     <b style="font-size: 2em">Цена {{ floatToCash(price) }}</b>
     <div class="chart">
-        <Chart/>
+        <Chart :symbol="$route.params.symbol"/>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
