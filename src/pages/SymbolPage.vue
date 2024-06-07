@@ -8,7 +8,7 @@
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
-            <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/>
+            <MyInput style="margin-bottom: 0" v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/>
             <div style="display: flex">
                 <MyButton class="buy-button" @click="buySymbol">Купить</MyButton>
                 <MyButton class="sell-button" @click="sellSymbol">Продать</MyButton>
