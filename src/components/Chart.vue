@@ -1,5 +1,5 @@
 <template>
-    <Line v-if="loaded" :data="chartData" :options="options"/>
+    <Line :data="chartData" :options="options"/>
 </template>
 <script>
 import { Line } from 'vue-chartjs'
@@ -10,8 +10,8 @@ export default {
         Line,
     },
     props: {
-        symbol: {
-            type: String,
+        symbolChart: {
+            type: Array,
             required: true,
         },
     },
@@ -43,15 +43,13 @@ export default {
         }
     },
     async mounted() {
-        const resp = await api.get(`/symbols/get-daily-history?symbol=${this.symbol}`)
         const timestamps = []
         const prices = []
-        resp.data.forEach((el) => {
+        this.symbolChart.forEach((el) => {
             timestamps.push(this.formatDate(new Date(el.timestamp)))
             prices.push(el.price)
         })
         this.chartData = {...this.chartData, labels: timestamps, datasets: [{backgroundColor: 'Tomato', data: prices}]}
-        this.loaded = true
     }
 }
 </script>

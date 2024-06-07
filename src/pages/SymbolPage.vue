@@ -1,8 +1,10 @@
 <template>
+    <p v-if="notFound" style="font-size: 5em">Акция {{ $route.params.symbol }} не найдена</p>
+    <div v-else>
     <p style="font-size: 2em">Акции компании {{ $route.params.symbol }}</p>
     <b style="font-size: 2em">Цена {{ floatToCash(price) }}</b>
     <div class="chart">
-        <Chart :symbol="$route.params.symbol"/>
+        <Chart v-if="symbolChartLoaded" :symbolChart="symbolChart"/>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
@@ -12,6 +14,7 @@
                 <MyButton style="margin-top: 0; margin-left: 0; width: 50%" @click="sellSymbol">Продать</MyButton>
             </div>
         </div>
+    </div>
     </div>
 </template>
 <script>
@@ -31,6 +34,8 @@ export default {
             amount: NaN,
             price: 0,
             symbol: this.$route.params.symbol,
+            symbolChartLoaded: false,
+            notFound: false,
         }
     },
     methods: {
@@ -91,8 +96,16 @@ export default {
         floatToCash,
     },
     async mounted() {
-        const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)
-        this.price = parseFloat(resp.data)
+        try {
+            const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)
+            this.symbolChart = await api.get(`symbols/get-daily-history?symbol=${this.symbol}`)
+            this.symbolChartLoaded = true
+            this.price = parseFloat(resp.data)
+        } catch (e) {
+            if (e.response.status === 404) {
+                this.notFound = true
+            }
+        }
     }
 } 
 </script>
