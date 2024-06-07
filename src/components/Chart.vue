@@ -1,5 +1,5 @@
 <template>
-    <Line :data="chartData" :options="options"/>
+    <Line v-if="loaded" :data="chartData" :options="options"/>
 </template>
 <script>
 import { Line } from 'vue-chartjs'
@@ -42,7 +42,7 @@ export default {
             return `${hours}:${minutes}`
         }
     },
-    async mounted() {
+    mounted() {
         const timestamps = []
         const prices = []
         this.symbolChart.forEach((el) => {
@@ -50,6 +50,7 @@ export default {
             prices.push(el.price)
         })
         this.chartData = {...this.chartData, labels: timestamps, datasets: [{backgroundColor: 'Tomato', data: prices}]}
+        this.loaded = true
     }
 }
 </script>

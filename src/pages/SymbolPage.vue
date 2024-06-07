@@ -10,8 +10,8 @@
         <div style="display: grid; width: 100%">
             <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/>
             <div style="display: flex">
-                <MyButton style="margin-top: 0; margin-right: 0; width: 50%" @click="buySymbol">Купить</MyButton>
-                <MyButton style="margin-top: 0; margin-left: 0; width: 50%" @click="sellSymbol">Продать</MyButton>
+                <MyButton class="buy-button" @click="buySymbol">Купить</MyButton>
+                <MyButton class="sell-button" @click="sellSymbol">Продать</MyButton>
             </div>
         </div>
     </div>
@@ -98,7 +98,8 @@ export default {
     async mounted() {
         try {
             const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)
-            this.symbolChart = await api.get(`symbols/get-daily-history?symbol=${this.symbol}`)
+            const resp2 = await api.get(`symbols/get-daily-history?symbol=${this.symbol}`) 
+            this.symbolChart = resp2.data
             this.symbolChartLoaded = true
             this.price = parseFloat(resp.data)
         } catch (e) {
@@ -119,5 +120,23 @@ export default {
     .chart {
         height: 25vw;
     }
+}
+.buy-button {
+    margin-top: 0;
+    margin-right: 0;
+    width: 50%;
+    background-color: #215f3d;
+}
+.buy-button:hover {
+    background-color: #1c5833;
+}
+.sell-button {
+    margin-top: 0;
+    margin-left: 0;
+    width: 50%;
+    background-color: #512f3d;
+}
+.sell-button:hover {
+    background-color: #4c2833;
 }
 </style>
