@@ -24,19 +24,33 @@ export default {
                 plugins: {
                     legend: {
                         display: false,
-                    }
-                },
-                scales: {
-                    x: {
-                        display: false,
                     },
                 },
             },
         }
     },
+    methods: {
+        formatDate(date) {
+            let hours = date.getHours()
+            let minutes = date.getMinutes()
+            if (hours < 10) {
+                hours = hours + "0"
+            }
+            if (minutes < 10) {
+                minutes = minutes + "0"
+            }
+            return `${hours}:${minutes}`
+        }
+    },
     async mounted() {
         const resp = await api.get(`/symbols/get-daily-history?symbol=${this.symbol}`)
-        this.chartData = {...this.chartData, labels: [...resp.data], datasets: [{backgroundColor: '#f87979', data: resp.data}]}
+        const timestamps = []
+        const prices = []
+        resp.data.forEach((el) => {
+            timestamps.push(this.formatDate(new Date(el.timestamp)))
+            prices.push(el.price)
+        })
+        this.chartData = {...this.chartData, labels: timestamps, datasets: [{backgroundColor: 'Tomato', data: prices}]}
         this.loaded = true
     }
 }

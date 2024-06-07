@@ -25,8 +25,8 @@ ChartJS.register(
     Legend
 )
 
-ChartJS.defaults.color = () => "#a17a5a"
-ChartJS.defaults.font.size = 15
+ChartJS.defaults.color = () => "#717a7a"
+ChartJS.defaults.font.size = 17
 
 api.init()
 
