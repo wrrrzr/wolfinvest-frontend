@@ -1,9 +1,8 @@
 <template>
-    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" placeholder="акция"/>
-    <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/> 
-    <MyButton @click="buySymbol">Купить</MyButton>
-    <MyButton @click="sellSymbol">Продать</MyButton>
-    <MyButton @click="getPrice">Узнать цену</MyButton>
+    <p>Введите тикер, его можно найти в поисковике</p>
+    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" placeholder="тикер"/>
+    <MyButton @click="selectSymbol">Выбрать</MyButton>
+    <p>Популярные акции:</p>
     <ListSymbols/>
 </template>
 <script>
@@ -24,52 +23,17 @@ export default {
         }
     },
     methods: {
-        async buySymbol() {
-            if (this.amount === "") {
-                alert("Можно вводить только число")
-                return
-            }
-            const amount = Number(this.amount)
-            const symbolName = this.symbolName
-            if (amount <= 0) {
-                alert("Можно брать только положительные числа")
-                return
-            }
-            const resp = await api.post(`/symbols/buy-symbol?symbol=${symbolName}&amount=${amount}`)
-        },
-        async sellSymbol() {
-            if (this.amount === "") {
-                alert("Можно вводить только число")
-                return
-            }
-            const amount = Number(this.amount)
-            const symbolName = this.symbolName
-            if (amount <= 0) {
-                alert("Можно продавать только положительные числа")
-                return
-            }
-            const resp = await api.post(`/symbols/sell-symbol?symbol=${symbolName}&amount=${amount}`)
-        },
-        async getPrice() {
-            if (this.amount === "") {
-                alert("Можно вводить только число")
-                return
-            }
-            const amount = Number(this.amount)
-            const symbolName = this.symbolName
-            if (amount <= 0) {
-                alert("Можно брать только положительные числа")
-                return
-            }
-            const resp = await api.get(`/symbols/get-price?symbol=${symbolName}`)
-            alert(Number(resp.data) * amount)
+        selectSymbol() {
+            this.$router.push(`/symbol/${this.symbolName}`)
         }
     },
 }
 </script>
 <style scoped>
 p {
-    font-size: 2em;
+    font-size: 1.5em;
+    margin: 0;
+    margin-left: 5px;
     font-family: "Gill Sans", sans-serif;
 }
 </style>
