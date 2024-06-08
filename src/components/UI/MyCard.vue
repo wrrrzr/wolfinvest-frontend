@@ -6,7 +6,7 @@
 <style scoped>
 .card {
   transition: 0.4s;
-  background-color: #808080;
+  background-color: var(--ui-card-background-color);
   font-size: 1.7em;
   font-family: 'Lucida Handwriting';
   margin: 5px;
@@ -15,7 +15,7 @@
 }
 
 .card:hover {
-  background-color: #A0A0A0;
+  background-color: var(--ui-card-hover-background-color);
 }
 
 .card * {

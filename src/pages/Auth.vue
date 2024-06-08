@@ -57,7 +57,7 @@ export default {
 <style scoped>
 .login {
   padding: 25px;
-  background: #708090;
+  background: var(--page-login-background);
   border-radius: 25px;
   font-family: 'Helvetica';
   font-size: 1em;

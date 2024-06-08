@@ -5,8 +5,8 @@
 </template>
 <style scoped>
 .btn {
-  background-color: #212f3d;
-  color: #808b96;
+  background-color: var(--ui-button-background-color);
+  color: var(--ui-button-color);
   border: none;
   border-radius: 17px;
   padding: 14px;
@@ -18,6 +18,6 @@
 }
 
 .btn:hover {
-  background-color: #1c2833;
+  background-color: var(--ui-button-hover-background-color);
 }
 </style>

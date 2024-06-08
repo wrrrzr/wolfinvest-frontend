@@ -18,7 +18,7 @@ export default {
 </script>
 <style scoped>
 .topnav {
-  background-color: #212f3d;
+  background-color: var(--ui-button-background-color);
   overflow: hidden;
   border-radius: 25px;
 }

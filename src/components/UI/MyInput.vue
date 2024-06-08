@@ -3,8 +3,8 @@
 </template>
 <style scoped>
 .input {
-  background-color: #212f3d;
-  color: #808b96;
+  background-color: var(--ui-input-background-color);
+  color: var(--ui-input-color);
   padding: 14px;
   text-align: left;
   font-size: 1.6em;
