@@ -134,9 +134,9 @@ export default {
     margin-top: 0;
     margin-left: 0;
     width: 50%;
-    background-color: #512f3d;
+    background-color: #512f6d;
 }
 .sell-button:hover {
-    background-color: #4c2833;
+    background-color: #4c2863;
 }
 </style>
