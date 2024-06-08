@@ -1,8 +1,8 @@
 <template>
   <div class="topnav">
     <MyButton @click="$router.push('/')">Главная</MyButton>
-    <MyButton @click="$router.push('/buy-symbols')">Купить акции</MyButton>
-    <MyButton @click="$router.push('/refills')">Пополнения</MyButton>
+    <MyButton @click="$router.push('/buy-symbols')">Акции</MyButton>
+    <MyButton @click="$router.push('/refills')">Пополнить</MyButton>
     <MyButton @click="$router.push('/news')">Новости</MyButton>
     <MyButton @click="$router.push('/about')">О нас</MyButton>
   </div>
@@ -21,6 +21,7 @@ export default {
   background-color: var(--ui-button-background-color);
   overflow: hidden;
   border-radius: 25px;
+  margin-bottom: 5px;
 }
 
 .topnav button {

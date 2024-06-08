@@ -67,13 +67,13 @@ export default {
 <style scoped>
 .notearn {
     display: inline-flex;
-    background-color: darkred;
+    background-color: var(--page-user-notearn);
     border-radius: 17px;
     padding: 3px;
 }
 .earn {
     display: inline-flex;
-    background-color: green;
+    background-color: var(--page-user-earn);
     border-radius: 17px;
     padding: 3px;
 }
