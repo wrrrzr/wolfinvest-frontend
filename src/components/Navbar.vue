@@ -3,7 +3,7 @@
     <MyButton @click="$router.push('/')">Главная</MyButton>
     <MyButton @click="$router.push('/buy-symbols')">Акции</MyButton>
     <MyButton @click="$router.push('/refills')">Пополнить</MyButton>
-    <MyButton @click="$router.push('/news')">Новости</MyButton>
+    <MyButton @click="$router.push('/settings')">Настройки</MyButton>
     <MyButton @click="$router.push('/about')">О нас</MyButton>
   </div>
 </template>

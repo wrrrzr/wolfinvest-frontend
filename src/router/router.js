@@ -1,10 +1,10 @@
 import Main from "@/pages/Main"
 import BuySymbols from "@/pages/BuySymbols"
 import Refills from "@/pages/Refills"
-import News from "@/pages/News"
 import About from "@/pages/About"
 import Auth from "@/pages/Auth"
 import SymbolPage from "@/pages/SymbolPage"
+import Settings from "@/pages/Settings"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 
@@ -25,11 +25,6 @@ const routes = [
         meta: { requiresAuth: true },
     },
     {
-        path: '/news',
-        component: News,
-        meta: { requiresAuth: false },
-    },
-    {
         path: '/about',
         component: About,
         meta: { requiresAuth: false },
@@ -37,6 +32,11 @@ const routes = [
     {
         path: '/auth',
         component: Auth,
+    },
+    {
+        path: '/settings',
+        component: Settings,
+        meta: { requiresAuth: true },
     },
     {
         path: '/symbol/:symbol',
