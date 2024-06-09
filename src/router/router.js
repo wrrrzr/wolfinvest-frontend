@@ -5,6 +5,7 @@ import About from "@/pages/About"
 import Auth from "@/pages/Auth"
 import SymbolPage from "@/pages/SymbolPage"
 import Settings from "@/pages/Settings"
+import ChangePassword from "@/pages/ChangePassword"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 
@@ -36,6 +37,11 @@ const routes = [
     {
         path: '/settings',
         component: Settings,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/change-password',
+        component: ChangePassword,
         meta: { requiresAuth: true },
     },
     {
