@@ -49,7 +49,11 @@ export default {
             timestamps.push(this.formatDate(new Date(el.timestamp)))
             prices.push(el.price)
         })
-        this.chartData = {...this.chartData, labels: timestamps, datasets: [{backgroundColor: 'Tomato', data: prices}]}
+        let borderColor = 'rgba(0, 0, 0, 0.5)'
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            borderColor = '#a0a0a050'
+        }
+        this.chartData = {...this.chartData, labels: timestamps, datasets: [{borderColor: borderColor, backgroundColor: 'Tomato', data: prices}]}
         this.loaded = true
     }
 }
