@@ -1,8 +1,9 @@
 <template>
     <div class="container">
         <div class="change-password">
-            <MyInput v-bind:value="old_password" @input="old_password = $event.target.value" placeholder="старый пароль"/>
-            <MyInput v-bind:value="new_password" @input="new_password = $event.target.value" placeholder="новый пароль"/>
+            <MyInput v-bind:value="oldPassword" @input="oldPassword = $event.target.value" placeholder="старый пароль"/>
+            <MyInput v-bind:value="newPassword" @input="newPassword = $event.target.value" placeholder="новый пароль"/>
+            <MyInput v-bind:value="confirmPassword" @input="confirmPassword = $event.target.value" placeholder="подтвердите пароль"/>
             <MyButton @click="changePassword">Сменить пароль</MyButton>
         </div>
     </div>
@@ -18,17 +19,22 @@ export default {
     },
     data() {
         return {
-            old_password: "",
-            new_password: "",
+            oldPassword: "",
+            newPassword: "",
+            confirmPassword: "",
         }
     },
     methods: {
         async changePassword() {
+            if (this.confirmPassword !== this.newPassword) {
+                alert("Пароли не совпадают!")
+                return
+            }
             try {
                 await api.post("/settings/change-password",
                     {
-                        old_password: this.old_password,
-                        new_password: this.new_password,
+                        old_password: this.oldPassword,
+                        new_password: this.newPassword,
                     }
                 )
                 this.$router.push("/")
