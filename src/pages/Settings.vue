@@ -18,7 +18,7 @@ export default {
         },
         exitFromAccount() {
             VueCookies.remove("token")
-            this.$router.push("/")
+            this.$router.go("/")
         }
     },
 }
