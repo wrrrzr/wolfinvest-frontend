@@ -1,22 +1,21 @@
 <template>
-<div class="container">
-<div class="login">
-    <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="юзернейм"/>
-    <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль" type="password"/>
-    <MyButton @click="login" style="margin-bottom: 10px">войти</MyButton>
-    <MyButton @click="register">зарегистрироваться</MyButton>
-</div>
-</div>
+    <MyForm>
+        <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="юзернейм"/>
+        <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль" type="password"/>
+        <MyButton @click="login" style="margin-bottom: 10px">войти</MyButton>
+        <MyButton @click="register">зарегистрироваться</MyButton>
+    </MyForm>
 </template>
 <script>
 import MyButton from "@/components/UI/MyButton"
 import MyInput from "@/components/UI/MyInput"
+import MyForm from "@/components/UI/MyForm"
 import api from "@/api"
 import VueCookies from 'vue-cookies'
 
 export default {
     components: {
-        MyButton, MyInput,
+        MyButton, MyInput, MyForm,
     },
     data() {
         return {
@@ -54,20 +53,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-.login {
-  padding: 25px;
-  background: var(--page-login-background);
-  border-radius: 25px;
-  font-family: 'Helvetica';
-  font-size: 1em;
-  display: inline grid;
-  margin-top: 15px;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>

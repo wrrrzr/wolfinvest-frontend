@@ -30,6 +30,18 @@ const api = {
                 throw e
             }
         }
+    },
+    async delete(url) {
+        try {
+            return await axios.delete(url)
+        } catch (e) {
+            if (e.response.status === 401) {
+                VueCookies.remove("token");
+                router.go("/auth");
+            } else {
+                throw e
+            }
+        }
     }
 }
 

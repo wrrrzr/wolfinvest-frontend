@@ -5,15 +5,22 @@
     <MyButton @click="$router.push('/refills')">Пополнить</MyButton>
     <MyButton @click="$router.push('/settings')">Настройки</MyButton>
     <MyButton @click="$router.push('/about')">О нас</MyButton>
+    <MyButton v-if="isAdmin()" @click="$router.push('/admin')">Админ</MyButton>
   </div>
 </template>
 <script>
+import {mapGetters} from "vuex"
 import MyButton from './UI/MyButton'
 
 export default {
     components: {
         MyButton
-    }
+    },
+    methods: {
+        ...mapGetters({
+            'isAdmin': 'user/isAdmin',
+        }),
+    },
 }
 </script>
 <style scoped>

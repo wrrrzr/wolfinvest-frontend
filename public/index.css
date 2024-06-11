@@ -11,9 +11,7 @@
         --ui-card-color: #0f0f0f;
         --ui-card-hover-background-color: #8a8a8a;
 
-        --page-login-background: #708090;
-
-        --page-change-password-background: #708090;
+        --ui-form-background: #708090;
 
         --page-user-earn: #006000;
         --page-user-notearn: darkred;
@@ -37,9 +35,7 @@
         --ui-card-color: #000000;
         --ui-card-hover-background-color: #aaaaaa;
 
-        --page-login-background: #708090;
-
-        --page-change-password-background: #708090;
+        --ui-form-background: #708090;
 
         --page-user-earn: green;
         --page-user-notearn: darkred;

@@ -3,6 +3,7 @@ import userModule from "./userModule"
 import mySymbolsModule from "./mySymbolsModule"
 import symbolsListModule from "./symbolsListModule"
 import refillsModule from "./refillsModule"
+import adminModule from "./adminModule"
 
 export default createStore({
     modules: {
@@ -10,5 +11,6 @@ export default createStore({
         mySymbols: mySymbolsModule,
         symbolsList: symbolsListModule,
         refills: refillsModule,
+        admin: adminModule,
     }
 })

@@ -6,6 +6,8 @@ import Auth from "@/pages/Auth"
 import SymbolPage from "@/pages/SymbolPage"
 import Settings from "@/pages/Settings"
 import ChangePassword from "@/pages/ChangePassword"
+import Admin from "@/pages/Admin"
+import HackUser from "@/pages/HackUser"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 
@@ -45,9 +47,18 @@ const routes = [
         meta: { requiresAuth: true },
     },
     {
+        path: '/admin',
+        component: Admin,
+        meta: { requiresAuth: true },
+    },
+    {
         path: '/symbol/:symbol',
         component: SymbolPage,
-    }
+    },
+    {
+        path: '/hack-user/:id',
+        component: HackUser,
+    },
 ]
 
 const router = createRouter({
