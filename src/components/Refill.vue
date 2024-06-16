@@ -1,6 +1,6 @@
 <template>
     <MyCard>
-        <b>количество: {{ floatToCash(amount) }}</b>
+        <b>{{ $t('amount') }}: {{ floatToCash(amount) }}</b>
         <br>
         <b>{{ date }}</b>
     </MyCard>
@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         date() {
-            return new Date(this.time).toLocaleString("ru-RU")
+            return new Date(this.time).toLocaleString(this.$t('localeString'))
         }
     },
     methods: {

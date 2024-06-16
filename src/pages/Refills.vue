@@ -1,7 +1,7 @@
 <template>
     <div class="get-refill">
-        <MyInput v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/>
-        <MyButton @click="takeRefill">Взять пополнение</MyButton>
+        <MyInput v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
+        <MyButton @click="takeRefill">{{ $t('take_refill') }}</MyButton>
     </div>
     <div>
         <Refill v-bind:value="refills" v-for="refill in refills" :amount="refill.amount" :time="refill.created_at"></Refill>
@@ -35,12 +35,12 @@ export default {
         }),
         async takeRefill() {
             if (this.amount === "") {
-                alert("Можно вводить только число")
+                alert(this.$t('alerts.only_number'))
                 return
             }
             const amount = Number(this.amount)
             if (amount <= 0) {
-                alert("Можно брать только положительные числа")
+                alert(this.$t('alerts.only_positive_numbers'))
                 return
             }
             const resp = await api.post(`/refills/take-refill?amount=${amount}`)

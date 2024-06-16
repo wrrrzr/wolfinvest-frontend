@@ -1,11 +1,11 @@
 <template>
     <MyCard style="text-align: center; font-size: 1.5em; font-family: sans-serif; margin-top: 10px">
         <p><b>{{ username }}</b></p>
-        <p>счёт: {{ floatToCash(balance) }}</p>
-        <p>итого: {{ floatToCash(totalBalance) }}</p>
+        <p>{{ $t('balance') }}: {{ floatToCash(balance) }}</p>
+        <p>{{ $t('total') }}: {{ floatToCash(totalBalance) }}</p>
         <div style="display: inline-flex; justify-content: space-between; font-size: 0.8em">
             <p :class="isEarn ? 'earn' : 'notearn'">{{ floatToCash(totalEarn.absolute) }} · {{ totalEarn.percent.toFixed(2) }}%</p>
-            <p style="font-size: 0.9em">за всё время</p>
+            <p style="font-size: 0.9em">{{ $t('during_all_time') }}</p>
         </div>
     </MyCard>
 </template>

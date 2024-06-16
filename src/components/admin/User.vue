@@ -1,8 +1,8 @@
 <template>
     <MyCard @click="goToHackUser">
-        <p>id: {{ user.id }}</p>
-        <p>username: {{ user.username }}</p>
-        <p>balance: {{ floatToCash(user.balance) }}</p>
+        <p>{{ $t('id') }}: {{ user.id }}</p>
+        <p>{{ $t('username') }}: {{ user.username }}</p>
+        <p>{{ $t('balance') }}: {{ floatToCash(user.balance) }}</p>
     </MyCard>
 </template>
 <script>

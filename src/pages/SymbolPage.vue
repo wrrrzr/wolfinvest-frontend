@@ -1,17 +1,17 @@
 <template>
-    <p v-if="notFound" style="font-size: 5em">Акция {{ $route.params.symbol }} не найдена</p>
+    <p v-if="notFound" style="font-size: 5em">{{ $t('symbol_not_found') }}</p>
     <div v-else>
-    <p style="font-size: 2em">Акции компании {{ $route.params.symbol }}</p>
-    <b style="font-size: 2em">Цена {{ floatToCash(price) }}</b>
+    <p style="font-size: 2em">{{ $t('symbol') }} {{ $route.params.symbol }}</p>
+    <b style="font-size: 2em">{{ $t('price') }} {{ floatToCash(price) }}</b>
     <div class="chart">
         <Chart v-if="symbolChartLoaded" :symbolChart="symbolChart"/>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
-            <MyInput style="margin-bottom: 0" v-bind:value="amount" @input="amount = $event.target.value" placeholder="количество" type="number"/>
+            <MyInput style="margin-bottom: 0" v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
             <div style="display: flex">
-                <MyButton class="buy-button" @click="buySymbol">Купить</MyButton>
-                <MyButton class="sell-button" @click="sellSymbol">Продать</MyButton>
+                <MyButton class="buy-button" @click="buySymbol">{{ $t('buy') }}</MyButton>
+                <MyButton class="sell-button" @click="sellSymbol">{{ $t('sell') }}</MyButton>
             </div>
         </div>
     </div>
@@ -45,50 +45,50 @@ export default {
         }),
         async buySymbol() {
             if (this.amount === "") {
-                alert("Можно вводить только числа")
+                alert(this.$t('alerts.only_numbers'))
                 return
             }
             const amount = Number(this.amount)
             const symbol = this.symbol
             if (amount <= 0) {
-                alert("Можно брать только положительное количество акций")
+                alert(this.$t('alerts.only_positive_numbers'))
                 return
             }
             try {
                 await api.post(`/symbols/buy-symbol?symbol=${symbol}&amount=${amount}`)
             } catch (e) {
-                alert("Недостаточно денег для покупки")
+                alert(this.$t('alerts.not_enough_money_to_buy'))
                 return
             }
             if (amount === 1) {
-                alert("Акция куплена!")
+                alert(this.$t('alerts.symbol_purchased'))
             } else {
-                alert("Акции куплены!")
+                alert(this.$t('alerts.symbols_purchased'))
             }
             await this.fetchSymbolsWithoutCache()
             await this.fetchUserWithoutCache()
         },
         async sellSymbol() {
             if (this.amount === "") {
-                alert("Можно вводить только числа")
+                alert(this.$t('alerts.only_numbers'))
                 return
             }
             const amount = Number(this.amount)
             const symbol = this.symbol
             if (amount <= 0) {
-                alert("Можно брать только положительное количество акций")
+                alert(this.$t('alerts.only_positive_numbers'))
                 return
             }
             try {
                 await api.post(`/symbols/sell-symbol?symbol=${symbol}&amount=${amount}`)
             } catch (e) {
-                alert("Недостаточно акций чтобы продать")
+                alert(this.$t('alerts.not_enough_symbols_to_sell'))
                 return
             }
             if (amount === 1) {
-                alert("Акция продана!")
+                alert(this.$t('alerts.symbol_sold'))
             } else {
-                alert("Акции проданы!")
+                alert(this.$t('alerts.symbols_sold'))
             }
             await this.fetchSymbolsWithoutCache()
             await this.fetchUserWithoutCache()

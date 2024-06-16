@@ -1,7 +1,7 @@
 <template>
     <MyCard @click="goToBuySymbol">
         <p style="user-select: none">{{ name }} ({{ code }})</p>
-        <p style="user-select: none">цена: {{ floatToCash(price) }}</p>
+        <p style="user-select: none">{{ $t('price') }}: {{ floatToCash(price) }}</p>
     </MyCard>
 </template>
 <script>

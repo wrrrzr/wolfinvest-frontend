@@ -1,9 +1,9 @@
 <template>
     <MyForm>
-        <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" placeholder="юзернейм"/>
-        <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" placeholder="пароль" type="password"/>
-        <MyButton @click="login" style="margin-bottom: 10px">войти</MyButton>
-        <MyButton @click="register">зарегистрироваться</MyButton>
+    <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" :placeholder="$t('username')"/>
+        <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" :placeholder="$t('password')" type="password"/>
+        <MyButton @click="login" style="margin-bottom: 10px">{{ $t('log_in') }}</MyButton>
+        <MyButton @click="register">{{ $t('register') }}</MyButton>
     </MyForm>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
                 await this.login()
             } catch (e) {
                 if (e.response.status === 400) {
-                    alert("Данный юзернейм уже занят")
+                    alert(this.$t('alerts.username_taken'))
                 }
             }
         },
@@ -41,7 +41,7 @@ export default {
                 this.$router.push('/')
             } catch(e) {
                 if (e.response.status === 400) {
-                    alert("Неправильный юзернейм или пароль")
+                    alert(this.$t('alerts.incorrect_login_data'))
                 }
             }
         }

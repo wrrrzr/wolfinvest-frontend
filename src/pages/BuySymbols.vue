@@ -1,8 +1,8 @@
 <template>
-    <p>Введите тикер, его можно найти в поисковике</p>
-    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" placeholder="тикер"/>
-    <MyButton @click="selectSymbol">Выбрать</MyButton>
-    <p>Популярные акции:</p>
+    <p>{{ $t('enter_ticker') }}</p>
+    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" :placeholder="$t('ticker')"/>
+    <MyButton @click="selectSymbol">{{ $t('select') }}</MyButton>
+    <p>{{ $t('popular_symbols') }}:</p>
     <ListSymbols/>
 </template>
 <script>

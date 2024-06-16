@@ -1,16 +1,17 @@
 <template>
-    <div style="display: inline-grid">
-        <MyButton @click="changePassword">Сменить пароль</MyButton>
-        <MyButton @click="exitFromAccount">Выйти из аккаунта</MyButton>
-    </div>
+    <MyForm>
+        <MyButton @click="changePassword">{{ $t('change_password') }}</MyButton>
+        <MyButton @click="exitFromAccount">{{ $t('log_out') }}</MyButton>
+    </MyForm>
 </template>
 <script>
 import VueCookies from "vue-cookies"
 import MyButton from "@/components/UI/MyButton"
+import MyForm from "@/components/UI/MyForm"
 
 export default {
     components: {
-        MyButton,
+        MyButton, MyForm,
     },
     methods: {
         changePassword() {
