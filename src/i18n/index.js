@@ -1,6 +1,6 @@
 import { createI18n } from "vue-i18n"
-import en from "./en.json"
-import ru from "./ru.json"
+import en from "./en"
+import ru from "./ru"
 
 const defaultLocale = "en"
 
