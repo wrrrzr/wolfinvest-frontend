@@ -1,20 +1,20 @@
 @media screen and (prefers-color-scheme: dark) {
     :root {
         --ui-button-background-color: #2a2a3a;
-        --ui-button-color: #808b96;
+        --ui-button-color: #9b9b9b;
         --ui-button-hover-background-color: #1a1a2a;
 
         --ui-input-background-color: #2a2a3a;
-        --ui-input-color: #808b96;
+        --ui-input-color: #9b9b9b;
 
-        --ui-card-background-color: #6a6a6a;
-        --ui-card-color: #0f0f0f;
-        --ui-card-hover-background-color: #8a8a8a;
+        --ui-card-background-color: #757575;
+        --ui-card-color: #000000;
+        --ui-card-hover-background-color: #909090;
 
         --ui-form-background: #708090;
 
-        --page-user-earn: #006000;
-        --page-user-notearn: darkred;
+        --page-user-earn: #30a030;
+        --page-user-notearn: #e03030;
     }
     body {
         background-color: #18181a;
@@ -24,24 +24,24 @@
 
 @media screen and (prefers-color-scheme: light) {
     :root {
-        --ui-button-background-color: #2a2a2f;
-        --ui-button-color: #808b96;
-        --ui-button-hover-background-color: #202025;
+        --ui-button-background-color: #2a2a3a;
+        --ui-button-color: #9b9b9b;
+        --ui-button-hover-background-color: #1a1a2a;
 
-        --ui-input-background-color: #2a2a2f;
-        --ui-input-color: #808b96;
+        --ui-input-background-color: #2a2a3a;
+        --ui-input-color: #9b9b9b;
 
-        --ui-card-background-color: #8a8a8a;
+        --ui-card-background-color: #757575;
         --ui-card-color: #000000;
-        --ui-card-hover-background-color: #aaaaaa;
+        --ui-card-hover-background-color: #909090;
 
         --ui-form-background: #708090;
 
-        --page-user-earn: green;
-        --page-user-notearn: darkred;
+        --page-user-earn: #30a030;
+        --page-user-notearn: #e03030;
     }
     body {
-        background-color: #5f5f5f;
-        color: #000000;
+        background-color: #18181a;
+        color: #bababa;
     }
 }

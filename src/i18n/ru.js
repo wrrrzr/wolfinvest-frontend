@@ -8,7 +8,7 @@ export default {
     "change_password": "сменить пароль",
     "log_out": "выйти",
     "price": "цена",
-    "balance": "баланс",
+    "balance": "счёт",
     "total": "итого",
     "during_all_time": "за всё время",
     "enter_ticker": "введите тикер, его можно найти в поисковике",

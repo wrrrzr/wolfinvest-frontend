@@ -1,17 +1,20 @@
 <template>
-    <MyCard @click="goToBuySymbol">
-        <p style="user-select: none"><b>{{ code }}</b></p>
-        <p style="user-select: none">{{ $t('amount') }}: {{ amount }}</p>
-        <p style="user-select: none">{{ $t('price') }}: {{ floatToCash(priceOne * amount) }} ({{ floatToCash(priceOne) }})</p>
-    </MyCard>
+    <SButton @click="goToBuySymbol">
+        <MyCard>
+            <p style="user-select: none"><b>{{ code }}</b></p>
+            <p style="user-select: none">{{ $t('amount') }}: {{ amount }}</p>
+            <p style="user-select: none">{{ $t('price') }}: {{ floatToCash(priceOne * amount) }} ({{ floatToCash(priceOne) }})</p>
+        </MyCard>
+    </SButton>
 </template>
 <script>
 import MyCard from "@/components/UI/MyCard"
+import SButton from "@/components/semantic/SButton"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyCard,
+        MyCard, SButton,
     },
     props: {
         code: {

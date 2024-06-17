@@ -126,6 +126,7 @@ export default {
     margin-right: 0;
     width: 50%;
     background-color: #215f3d;
+    color: white;
 }
 .buy-button:hover {
     background-color: #1c5833;
@@ -135,6 +136,7 @@ export default {
     margin-left: 0;
     width: 50%;
     background-color: #512f6d;
+    color: white;
 }
 .sell-button:hover {
     background-color: #4c2863;
