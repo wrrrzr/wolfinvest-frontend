@@ -45,4 +45,6 @@ const api = {
     }
 }
 
+api.init()
+
 export default api;

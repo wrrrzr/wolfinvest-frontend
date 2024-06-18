@@ -11,7 +11,6 @@ import MyButton from "@/components/UI/MyButton"
 import MyInput from "@/components/UI/MyInput"
 import MyForm from "@/components/UI/MyForm"
 import api from "@/api"
-import VueCookies from 'vue-cookies'
 
 export default {
     components: {
@@ -37,7 +36,7 @@ export default {
         async login() {
             try {
                 const resp = await api.post("/auth/auth", { username: this.username, password: this.password })
-                VueCookies.set("token", resp.data)
+                this.$cookies.set("token", resp.data)
                 this.$router.push('/')
             } catch(e) {
                 if (e.response.status === 400) {
@@ -47,7 +46,7 @@ export default {
         }
     },
     beforeMount() {
-        if (VueCookies.isKey("token")) {
+        if (this.$cookies.isKey("token")) {
             this.$router.push('/')
         }
     }

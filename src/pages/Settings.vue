@@ -5,7 +5,6 @@
     </MyForm>
 </template>
 <script>
-import VueCookies from "vue-cookies"
 import MyButton from "@/components/UI/MyButton"
 import MyForm from "@/components/UI/MyForm"
 
@@ -18,7 +17,7 @@ export default {
             this.$router.push("/change-password")
         },
         exitFromAccount() {
-            VueCookies.remove("token")
+            this.$cookies.remove("token")
             this.$router.go("/")
         }
     },
