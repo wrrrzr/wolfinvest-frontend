@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         selectSymbol() {
-            this.$router.push(`/symbol/${this.symbolName}`)
+            this.$router.push(`/symbol/${this.symbolName.toUpperCase()}`)
         }
     },
 }
