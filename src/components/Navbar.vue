@@ -1,10 +1,10 @@
 <template>
   <div class="topnav">
-      <MyButton @click="$router.push('/')">{{ $t('navbar.home') }}</MyButton>
-    <MyButton @click="$router.push('/buy-symbols')">{{ $t('navbar.symbols') }}</MyButton>
-    <MyButton @click="$router.push('/refills')">{{ $t('navbar.refills') }}</MyButton>
-    <MyButton @click="$router.push('/settings')">{{ $t('navbar.settings') }}</MyButton>
-    <MyButton @click="$router.push('/about')">{{ $t('navbar.about') }}</MyButton>
+      <router-link :to="root"><MyButton>{{ $t('navbar.home') }}</MyButton></router-link>
+      <router-link :to="buySymbols"><MyButton>{{ $t('navbar.symbols') }}</MyButton></router-link>
+      <router-link :to="refills"><MyButton>{{ $t('navbar.refills') }}</MyButton></router-link>
+      <router-link :to="settings"><MyButton>{{ $t('navbar.settings') }}</MyButton></router-link>
+      <router-link :to="about"><MyButton>{{ $t('navbar.about') }}</MyButton></router-link>
     <MyButton v-if="isAdmin()" @click="$router.push('/admin')">{{ $t('navbar.admin') }}</MyButton>
   </div>
 </template>
@@ -15,6 +15,15 @@ import MyButton from './UI/MyButton'
 export default {
     components: {
         MyButton
+    },
+    data() {
+        return {
+            root: "/",
+            buySymbols: "/buy-symbols",
+            refills: "/refills",
+            settings: "/settings",
+            about: "/about",
+        }
     },
     methods: {
         ...mapGetters({
