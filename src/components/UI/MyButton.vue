@@ -19,5 +19,6 @@
 
 .btn:hover {
   background-color: var(--ui-button-hover-background-color);
+  cursor: pointer;
 }
 </style>

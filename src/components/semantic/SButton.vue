@@ -11,4 +11,8 @@
   color: inherit;
   background-color: transparent;
 }
+
+.s-button:hover {
+  cursor: pointer;
+}
 </style>
