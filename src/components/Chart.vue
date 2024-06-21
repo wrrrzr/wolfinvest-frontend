@@ -47,7 +47,7 @@ export default {
         const prices = []
         this.symbolChart.forEach((el) => {
             timestamps.push(this.formatDate(new Date(el.timestamp)))
-            prices.push(el.price)
+            prices.push(el.price.buy)
         })
         let borderColor = 'rgba(0, 0, 0, 0.5)'
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {

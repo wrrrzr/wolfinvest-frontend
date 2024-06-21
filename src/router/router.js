@@ -4,6 +4,8 @@ import Refills from "@/pages/Refills"
 import About from "@/pages/About"
 import Auth from "@/pages/Auth"
 import SymbolPage from "@/pages/SymbolPage"
+import SymbolBuy from "@/pages/SymbolBuy"
+import SymbolSell from "@/pages/SymbolSell"
 import Settings from "@/pages/Settings"
 import ChangePassword from "@/pages/ChangePassword"
 import Admin from "@/pages/Admin"
@@ -54,6 +56,14 @@ const routes = [
     {
         path: '/symbol/:symbol',
         component: SymbolPage,
+    },
+    {
+        path: '/symbol/:symbol/buy',
+        component: SymbolBuy,
+    },
+    {
+        path: '/symbol/:symbol/sell',
+        component: SymbolSell,
     },
     {
         path: '/hack-user/:id',

@@ -27,6 +27,8 @@ export default {
     "delete": "удалить",
     "id": "id",
     "localeString": "ru-RU",
+    "price_buy": "цена покупки",
+    "price_sell": "цена продажи",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",

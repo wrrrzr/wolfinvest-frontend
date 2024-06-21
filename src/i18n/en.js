@@ -27,6 +27,8 @@ export default {
     "delete": "delete",
     "id": "id",
     "localeString": "en-UK",
+    "price_buy": "purchase price",
+    "price_sell": "selling price",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",

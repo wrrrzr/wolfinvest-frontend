@@ -8,7 +8,6 @@
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
-            <MyInput style="margin-bottom: 0" v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
             <div style="display: flex">
                 <MyButton class="buy-button" @click="buySymbol">{{ $t('buy') }}</MyButton>
                 <MyButton class="sell-button" @click="sellSymbol">{{ $t('sell') }}</MyButton>
@@ -38,60 +37,20 @@ export default {
             notFound: false,
         }
     },
+    computed: {
+        buySymbolFormat() { return `/symbol/${this.symbol}/buy` },
+        sellSymbolFormat() { return `/symbol/${this.symbol}/sell` },
+    },
     methods: {
         ...mapActions({
             fetchSymbolsWithoutCache: "mySymbols/fetchSymbolsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
         }),
-        async buySymbol() {
-            if (this.amount === "") {
-                alert(this.$t('alerts.only_numbers'))
-                return
-            }
-            const amount = Number(this.amount)
-            const symbol = this.symbol
-            if (amount <= 0) {
-                alert(this.$t('alerts.only_positive_numbers'))
-                return
-            }
-            try {
-                await api.post(`/symbols/buy-symbol?symbol=${symbol}&amount=${amount}`)
-            } catch (e) {
-                alert(this.$t('alerts.not_enough_money_to_buy'))
-                return
-            }
-            if (amount === 1) {
-                alert(this.$t('alerts.symbol_purchased'))
-            } else {
-                alert(this.$t('alerts.symbols_purchased'))
-            }
-            await this.fetchSymbolsWithoutCache()
-            await this.fetchUserWithoutCache()
+        buySymbol() {
+            this.$router.push(this.buySymbolFormat)
         },
-        async sellSymbol() {
-            if (this.amount === "") {
-                alert(this.$t('alerts.only_numbers'))
-                return
-            }
-            const amount = Number(this.amount)
-            const symbol = this.symbol
-            if (amount <= 0) {
-                alert(this.$t('alerts.only_positive_numbers'))
-                return
-            }
-            try {
-                await api.post(`/symbols/sell-symbol?symbol=${symbol}&amount=${amount}`)
-            } catch (e) {
-                alert(this.$t('alerts.not_enough_symbols_to_sell'))
-                return
-            }
-            if (amount === 1) {
-                alert(this.$t('alerts.symbol_sold'))
-            } else {
-                alert(this.$t('alerts.symbols_sold'))
-            }
-            await this.fetchSymbolsWithoutCache()
-            await this.fetchUserWithoutCache()
+        sellSymbol() {
+            this.$router.push(this.sellSymbolFormat)
         },
         floatToCash,
     },
@@ -101,7 +60,7 @@ export default {
             const resp2 = await api.get(`symbols/get-daily-history?symbol=${this.symbol}`) 
             this.symbolChart = resp2.data
             this.symbolChartLoaded = true
-            this.price = parseFloat(resp.data)
+            this.price = parseFloat(resp.data.buy)
         } catch (e) {
             if (e.response.status === 404) {
                 this.notFound = true

@@ -36,7 +36,7 @@ export default {
         totalBalance() {
             let sum = 0
             this.$store.state.mySymbols.symbols.forEach(
-                (el) => {sum += el.price * el.amount}
+                (el) => {sum += el.price.buy * el.amount}
             )
             return sum + this.balance
         },
