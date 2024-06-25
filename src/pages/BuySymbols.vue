@@ -1,9 +1,19 @@
 <template>
-    <p>{{ $t('enter_ticker') }}</p>
-    <MyInput v-bind:value="symbolName" @input="symbolName = $event.target.value" :placeholder="$t('ticker')"/>
-    <MyButton @click="selectSymbol">{{ $t('select') }}</MyButton>
-    <p>{{ $t('popular_symbols') }}:</p>
-    <ListSymbols/>
+    <div class="center">
+        <MyInput v-bind:value="symbolName" @input="onInput" :placeholder="$t('symbol')"/>
+    </div>
+    <div class="center">
+        <router-link v-for="i in tickers" :to="'/symbol/' + i.ticker">
+            <MyButton>{{ i.name }}</MyButton>
+        </router-link>
+    </div>
+    <div class="center">
+        <p>{{ $t('enter_ticker') }}</p>
+    </div>
+    <div class="center">
+        <MyInput v-bind:value="tickerName" @input="tickerName = $event.target.value" :placeholder="$t('ticker')"/>
+        <MyButton @click="selectTicker">{{ $t('select') }}</MyButton>
+    </div>
 </template>
 <script>
 import MyInput from "@/components/UI/MyInput"
@@ -19,12 +29,34 @@ export default {
     data() {
         return {
             symbolName: "",
+            tickerName: "",
             amount: 0,
+            tickers: [],
+            timeoutID: null,
         }
     },
     methods: {
-        selectSymbol() {
-            this.$router.push(`/symbol/${this.symbolName.toUpperCase()}`)
+        selectTicker() {
+            this.$router.push(`/symbol/${this.tickerName.toUpperCase()}`)
+        },
+        onInput(event) {
+            this.symbolName = event.target.value
+            if (this.symbolName === "") {
+                return
+            }
+            this.debounce(this.findTicker, 200)()
+        },
+        findTicker() {
+            api.get(`/symbols/get-symbol-ticker?name=${this.symbolName}`).then(
+                resp => this.tickers = resp.data)
+        },
+        debounce(fn, delay) {
+            return () => {
+                clearTimeout(this.timeoutID)
+                this.timeoutID = setTimeout(() => {
+                    fn.apply()
+                }, delay)
+            }
         }
     },
 }
@@ -35,5 +67,12 @@ p {
     margin: 0;
     margin-left: 5px;
     font-family: "Gill Sans", sans-serif;
+}
+
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 </style>

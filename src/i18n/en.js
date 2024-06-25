@@ -11,7 +11,7 @@ export default {
     "balance": "balance",
     "total": "total",
     "during_all_time": "during all time",
-    "enter_ticker": "enter the ticker, it can be found in the search engine",
+    "enter_ticker": "if you don’t find the symbol you need, enter the ticker, it can be found in the search engine",
     "ticker": "ticker",
     "select": "select",
     "popular_symbols": "popular symbols",
