@@ -2,12 +2,12 @@ import { createI18n } from "vue-i18n"
 import en from "./en"
 import ru from "./ru"
 
-const defaultLocale = "en"
+const defaultLocale = "ru"
 
 export default createI18n({
     legacy: false,
     fallbackLocale: defaultLocale,
-    locale: window.navigator.language.slice(0, 2),
+    locale: localStorage.getItem('lang') || defaultLocale,
     messages: {
         en: en,
         ru: ru,

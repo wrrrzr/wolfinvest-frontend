@@ -29,6 +29,7 @@ export default {
     "localeString": "en-UK",
     "price_buy": "purchase price",
     "price_sell": "selling price",
+    "language": "language",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",

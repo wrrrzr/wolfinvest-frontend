@@ -29,6 +29,7 @@ export default {
     "localeString": "ru-RU",
     "price_buy": "цена покупки",
     "price_sell": "цена продажи",
+    "language": "язык",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",
