@@ -29,6 +29,7 @@ export default {
             fetchRefills: "refills/fetchRefills",
             fetchRefillsWithoutCache: "refills/fetchRefillsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
+            fetchBalanceHistoryWithoutCache: "balanceHistory/fetchBalanceHistoryWithoutCache",
         }),
         ...mapGetters({
             getReverse: "refills/getReverse",
@@ -46,6 +47,7 @@ export default {
             const resp = await api.post(`/refills/take-refill?amount=${amount}`)
             await this.fetchRefillsWithoutCache()
             await this.fetchUserWithoutCache()
+            await this.fetchBalanceHistoryWithoutCache()
             this.refills = this.getReverse()
         },
     },
