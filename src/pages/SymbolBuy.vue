@@ -32,6 +32,7 @@ export default {
         ...mapActions({
             fetchSymbolsWithoutCache: "mySymbols/fetchSymbolsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
+            fetchBalanceHistoryWithoutCache: "balanceHistory/fetchBalanceHistoryWithoutCache",
         }),
         async buySymbol() {
             if (this.amount === "") {
@@ -57,6 +58,7 @@ export default {
             }
             await this.fetchSymbolsWithoutCache()
             await this.fetchUserWithoutCache()
+            await this.fetchBalanceHistoryWithoutCache()
         },
         floatToCash,
     },

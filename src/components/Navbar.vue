@@ -4,6 +4,7 @@
       <router-link :to="buySymbols"><MyButton>{{ $t('navbar.symbols') }}</MyButton></router-link>
       <router-link :to="refills"><MyButton>{{ $t('navbar.refills') }}</MyButton></router-link>
       <router-link :to="settings"><MyButton>{{ $t('navbar.settings') }}</MyButton></router-link>
+      <router-link :to="balance_history"><MyButton>{{ $t('navbar.balance_history') }}</MyButton></router-link>
       <router-link :to="about"><MyButton>{{ $t('navbar.about') }}</MyButton></router-link>
     <MyButton v-if="isAdmin()" @click="$router.push('/admin')">{{ $t('navbar.admin') }}</MyButton>
   </div>
@@ -22,6 +23,7 @@ export default {
             buySymbols: "/buy-symbols",
             refills: "/refills",
             settings: "/settings",
+            balance_history: "/balance-history",
             about: "/about",
         }
     },

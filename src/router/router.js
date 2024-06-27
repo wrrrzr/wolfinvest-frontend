@@ -10,6 +10,7 @@ import Settings from "@/pages/Settings"
 import ChangePassword from "@/pages/ChangePassword"
 import Admin from "@/pages/Admin"
 import HackUser from "@/pages/HackUser"
+import BalanceHistory from "@/pages/BalanceHistory"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 
@@ -60,14 +61,21 @@ const routes = [
     {
         path: '/symbol/:symbol/buy',
         component: SymbolBuy,
+        meta: { requiresAuth: true },
     },
     {
         path: '/symbol/:symbol/sell',
         component: SymbolSell,
+        meta: { requiresAuth: true },
     },
     {
         path: '/hack-user/:id',
         component: HackUser,
+    },
+    {
+        path: '/balance-history',
+        component: BalanceHistory,
+        meta: { requiresAuth: true },
     },
 ]
 
