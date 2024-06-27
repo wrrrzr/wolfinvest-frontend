@@ -19,12 +19,11 @@
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Symbol from "@/components/Symbol"
-import ListSymbols from "@/components/ListSymbols"
 import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, Symbol, ListSymbols,
+        MyInput, MyButton, Symbol,
     },
     data() {
         return {
