@@ -3,8 +3,16 @@
     <div v-else>
     <p style="font-size: 2em">{{ $t('symbol') }} {{ $route.params.symbol }}</p>
     <b style="font-size: 2em">{{ $t('price') }} {{ floatToCash(price) }}</b>
+    <MyPanel>
+    <MyButton @click="m5">{{ $t('history_intervals.5m') }}</MyButton>
+    <MyButton @click="h1">{{ $t('history_intervals.1h') }}</MyButton>
+    <MyButton @click="d1">{{ $t('history_intervals.1d') }}</MyButton>
+    <MyButton @click="wk1">{{ $t('history_intervals.1wk') }}</MyButton>
+    <MyButton @click="mo1">{{ $t('history_intervals.1mo') }}</MyButton>
+    <MyButton @click="mo3">{{ $t('history_intervals.3mo') }}</MyButton>
+    </MyPanel>
     <div class="chart">
-        <Chart v-if="symbolChartLoaded" :symbolChart="symbolChart"/>
+        <Chart ref="chart" v-if="symbolChartLoaded" :interval="interval" :symbolsData="symbolChart"/>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
@@ -20,13 +28,14 @@
 import { mapActions } from "vuex"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
+import MyPanel from "@/components/UI/MyPanel"
 import Chart from "@/components/Chart"
 import api from "@/api"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyInput, MyButton, Chart,
+        MyInput, MyButton, MyPanel, Chart,
     },
     data() {
         return {
@@ -35,6 +44,7 @@ export default {
             symbol: this.$route.params.symbol,
             symbolChartLoaded: false,
             notFound: false,
+            interval: 1,
         }
     },
     computed: {
@@ -46,6 +56,12 @@ export default {
             fetchSymbolsWithoutCache: "mySymbols/fetchSymbolsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
         }),
+        m5() { this.interval = 1 },
+        h1() { this.interval = 2 },
+        d1() { this.interval = 3 },
+        wk1() { this.interval = 4 },
+        mo1() { this.interval = 5 },
+        mo3() { this.interval = 6 },
         buySymbol() {
             this.$router.push(this.buySymbolFormat)
         },
@@ -57,7 +73,7 @@ export default {
     async mounted() {
         try {
             const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)
-            const resp2 = await api.get(`symbols/get-daily-history?symbol=${this.symbol}`) 
+            const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
             this.symbolChart = resp2.data
             this.symbolChartLoaded = true
             this.price = parseFloat(resp.data.buy)
@@ -66,7 +82,14 @@ export default {
                 this.notFound = true
             }
         }
-    }
+    },
+    watch: {
+        async interval(newInterval) {
+            const resp = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
+            this.symbolChart = resp.data
+            this.$refs.chart.updateData(this.interval, resp.data)
+        },
+    },
 } 
 </script>
 <style scoped>

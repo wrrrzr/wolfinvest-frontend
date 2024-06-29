@@ -35,7 +35,7 @@ export default {
         "symbols": "Symbols",
         "refills": "Refills",
         "settings": "Settings",
-        "balance_history": "Balance History",
+        "balance_history": "History",
         "about": "About",
         "admin": "Admin"
     },
@@ -61,6 +61,14 @@ export default {
         "1": "the administrator changed balance to %amount%",
         "2": "you bought %amount% worth of symbols",
         "3": "you sold symbols and get %amount%",
+    },
+    "history_intervals": {
+        "5m": "5 minutes",
+        "1h": "hour",
+        "1d": "day",
+        "1wk": "week",
+        "1mo": "month",
+        "3mo": "3 months"
     },
     "text_about": "Are you interested in the idea of making money on stocks, but are you not yet ready to take the risk? Do you want to “just try” without investing any money or risking losing anything? Then you need our Simulator!\nHere you can invest virtual, free “money” in real stocks of real companies at their current price at the moment.\nBuy and sell stocks on our Simulator, and you will see your winnings and losses in real time - exactly the same amount as if you were playing on a real exchange!"
 }
