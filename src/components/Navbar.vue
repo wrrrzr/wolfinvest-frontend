@@ -1,21 +1,22 @@
 <template>
   <div class="topnav">
-      <router-link :to="root"><MyButton>{{ $t('navbar.home') }}</MyButton></router-link>
-      <router-link :to="buySymbols"><MyButton>{{ $t('navbar.symbols') }}</MyButton></router-link>
-      <router-link :to="refills"><MyButton>{{ $t('navbar.refills') }}</MyButton></router-link>
-      <router-link :to="settings"><MyButton>{{ $t('navbar.settings') }}</MyButton></router-link>
-      <router-link :to="balance_history"><MyButton>{{ $t('navbar.balance_history') }}</MyButton></router-link>
-      <router-link :to="about"><MyButton>{{ $t('navbar.about') }}</MyButton></router-link>
-    <MyButton v-if="isAdmin()" @click="$router.push('/admin')">{{ $t('navbar.admin') }}</MyButton>
+      <NavLink :to="root">{{ $t('navbar.home') }}</NavLink>
+      <NavLink :to="buySymbols">{{ $t('navbar.symbols') }}</NavLink>
+      <NavLink :to="refills">{{ $t('navbar.refills') }}</NavLink>
+      <NavLink :to="settings">{{ $t('navbar.settings') }}</NavLink>
+      <NavLink :to="balance_history">{{ $t('navbar.balance_history') }}</NavLink>
+      <NavLink :to="about">{{ $t('navbar.about') }}</NavLink>
+      <NavLink :to="admin" v-if="isAdmin()">{{ $t('navbar.admin') }}</NavLink>
   </div>
 </template>
 <script>
 import {mapGetters} from "vuex"
 import MyButton from './UI/MyButton'
+import NavLink from "@/components/NavLink"
 
 export default {
     components: {
-        MyButton
+        MyButton, NavLink,
     },
     data() {
         return {
@@ -25,6 +26,7 @@ export default {
             settings: "/settings",
             balance_history: "/balance-history",
             about: "/about",
+            admin: "/admin",
         }
     },
     methods: {
@@ -40,10 +42,5 @@ export default {
   overflow: hidden;
   border-radius: 25px;
   margin-bottom: 5px;
-}
-
-.topnav button {
-  border-radius: 0px;
-  margin: 0px;
 }
 </style>

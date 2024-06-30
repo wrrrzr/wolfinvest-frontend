@@ -30,6 +30,7 @@ export default {
     "price_buy": "цена покупки",
     "price_sell": "цена продажи",
     "language": "язык",
+    "no_balance_changes": "у вас пока нету изменений баланса",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",

@@ -30,6 +30,7 @@ export default {
     "price_buy": "purchase price",
     "price_sell": "selling price",
     "language": "language",
+    "no_balance_changes": "you have no balance changes yet",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",
@@ -56,7 +57,7 @@ export default {
         "password_is_set": "password is set",
         "user_is_deleted": "user is deleted"
     },
-    "reasons": {
+    "reason": {
         "0": "replenishment in the amount of %amount%",
         "1": "the administrator changed balance to %amount%",
         "2": "you bought %amount% worth of symbols",

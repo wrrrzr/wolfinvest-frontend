@@ -27,7 +27,9 @@ export default {
 </script>
 <style scoped>
 .list {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
+  background-color: #2d3137;
+  border-radius: 17px;
 }
 </style>
