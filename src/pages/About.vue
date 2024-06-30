@@ -3,8 +3,8 @@
 </template>
 <style scoped>
 p {
-  font-family: monospace;
-  font-size: 2em;
+  font-family: 'Helvetica';
+  font-size: 1.5em;
   margin: 0;
   margin-left: 10px;
 }

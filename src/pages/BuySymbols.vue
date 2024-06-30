@@ -7,12 +7,14 @@
             <MyButton>{{ i.name }}</MyButton>
         </router-link>
     </div>
+    <div v-if="symbolNotFound">
     <div class="center">
         <p>{{ $t('enter_ticker') }}</p>
     </div>
     <div class="center">
         <MyInput v-bind:value="tickerName" @input="tickerName = $event.target.value" :placeholder="$t('ticker')"/>
         <MyButton @click="selectTicker">{{ $t('select') }}</MyButton>
+    </div>
     </div>
 </template>
 <script>
@@ -32,6 +34,7 @@ export default {
             amount: 0,
             tickers: [],
             timeoutID: null,
+            symbolNotFound: false,
         }
     },
     methods: {
@@ -47,7 +50,8 @@ export default {
         },
         findTicker() {
             api.get(`/symbols/get-symbol-ticker?name=${this.symbolName}`).then(
-                resp => this.tickers = resp.data)
+                resp => this.tickers = resp.data
+            )
         },
         debounce(fn, delay) {
             return () => {
@@ -55,6 +59,15 @@ export default {
                 this.timeoutID = setTimeout(() => {
                     fn.apply()
                 }, delay)
+            }
+        },
+    },
+    watch: {
+        tickers(newVal) {
+            if (newVal.length === 0) {
+                this.symbolNotFound = true
+            } else {
+                this.symbolNotFound = false
             }
         }
     },
