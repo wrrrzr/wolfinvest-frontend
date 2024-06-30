@@ -24,8 +24,8 @@ export default {
   display: inline-block;
   font-size: 1.6em;
   font-family: monospace;
-  border-radius: 0px;
-  margin: 0px;
+  border-radius: 17px;
+  margin: 5px;
 }
 
 .link:hover {

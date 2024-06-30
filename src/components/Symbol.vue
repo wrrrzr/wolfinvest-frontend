@@ -1,20 +1,20 @@
 <template>
-    <SButton @click="goToBuySymbol">
+    <Link :to="'/symbol/' + code">
         <MyCard>
             <p style="user-select: none"><b>{{ code }}</b></p>
             <p style="user-select: none">{{ $t('amount') }}: {{ amount }}</p>
             <p style="user-select: none">{{ $t('price') }}: {{ floatToCash(priceOne * amount) }} ({{ floatToCash(priceOne) }})</p>
         </MyCard>
-    </SButton>
+    </Link>
 </template>
 <script>
 import MyCard from "@/components/UI/MyCard"
-import SButton from "@/components/semantic/SButton"
+import Link from "@/components/Link"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyCard, SButton,
+        MyCard, Link,
     },
     props: {
         code: {
