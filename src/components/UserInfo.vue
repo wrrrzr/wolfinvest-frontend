@@ -1,5 +1,5 @@
 <template>
-    <MyCard style="text-align: center; font-size: 1.5em; font-family: sans-serif; margin-top: 10px">
+    <MyCard style="text-align: center; font-size: 1.5em; font-family: sans-serif">
         <p><b>{{ username }}</b></p>
         <p>{{ $t('balance') }}: {{ floatToCash(balance) }}</p>
         <p>{{ $t('total') }}: {{ floatToCash(totalBalance) }}</p>
