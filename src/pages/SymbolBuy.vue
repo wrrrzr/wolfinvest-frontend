@@ -63,8 +63,8 @@ export default {
         floatToCash,
     },
     async mounted() {
-        const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)
-        this.price = resp.data.buy
+        const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
+        this.price = resp.data.price.buy
     }
 }
 </script>
