@@ -1,7 +1,7 @@
 <template>
     <p v-if="notFound" style="font-size: 5em">{{ $t('symbol_not_found') }}</p>
     <div v-else>
-    <p style="font-size: 2em">{{ $t('symbol') }} {{ $route.params.symbol }}</p>
+    <p style="font-size: 2em">{{ $t('symbol') }} {{ symbolName }}</p>
     <b style="font-size: 2em">{{ $t('price') }} {{ floatToCash(price) }}</b>
     <MyPanel>
     <MyButton @click="m5">{{ $t('history_intervals.5m') }}</MyButton>
@@ -45,6 +45,7 @@ export default {
             symbolChartLoaded: false,
             notFound: false,
             interval: 1,
+            symbolName: "",
         }
     },
     computed: {
@@ -72,11 +73,12 @@ export default {
     },
     async mounted() {
         try {
-            const resp = await api.get(`symbols/get-price?symbol=${this.symbol}`)
+            const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
             const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
             this.symbolChart = resp2.data
             this.symbolChartLoaded = true
-            this.price = parseFloat(resp.data.buy)
+            this.price = parseFloat(resp.data.price.buy)
+            this.symbolName = resp.data.name
         } catch (e) {
             if (e.response.status === 404) {
                 this.notFound = true

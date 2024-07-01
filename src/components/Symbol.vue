@@ -1,7 +1,7 @@
 <template>
     <Link :to="'/symbol/' + code">
         <MyCard>
-            <p style="user-select: none"><b>{{ code }}</b></p>
+            <p style="user-select: none"><b>{{ name }}</b></p>
             <p style="user-select: none">{{ $t('amount') }}: {{ amount }}</p>
             <p style="user-select: none">{{ $t('price') }}: {{ floatToCash(priceOne * amount) }} ({{ floatToCash(priceOne) }})</p>
         </MyCard>
@@ -17,6 +17,10 @@ export default {
         MyCard, Link,
     },
     props: {
+        name: {
+            type: String,
+            required: true,
+        },
         code: {
             type: String,
             required: true,
@@ -31,9 +35,6 @@ export default {
         },
     },
     methods: {
-        goToBuySymbol() {
-            this.$router.push(`/symbol/${this.code}`)
-        },
         floatToCash,
     }
 }

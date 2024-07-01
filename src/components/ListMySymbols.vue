@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <Symbol v-for="i in symbols" :code="i.code" :amount="i.amount" :priceOne="i.price.buy"/>
+        <Symbol v-for="i in symbols" :name="i.name" :code="i.code" :amount="i.amount" :priceOne="i.price.buy"/>
     </div>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
             fetchSymbols: "mySymbols/fetchSymbols",
         })
     },
-    async mounted() {
+    mounted() {
         this.fetchSymbols()
     }
 }
