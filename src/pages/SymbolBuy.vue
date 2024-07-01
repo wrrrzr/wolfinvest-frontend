@@ -4,12 +4,13 @@
         <p>{{ $route.params.symbol }}</p>
         <p>{{ $t('price_buy') }}: {{ floatToCash(price) }}</p>
     </MyCard>
+    <p style="font-size: 1.5em; margin: 5px">{{ $t('avaible_to_buy') }} {{ avaibleToBuy }}</p>
     <MyInput v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
     <MyButton @click="buySymbol">{{ $t('buy') }}</MyButton>
     </MyForm>
 </template>
 <script>
-import { mapActions } from "vuex"
+import { mapActions, mapState } from "vuex"
 import MyCard from "@/components/UI/MyCard"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
@@ -28,10 +29,19 @@ export default {
             symbol: this.$route.params.symbol,
         }
     },
+    computed: {
+        ...mapState({
+            balance: state => state.user.balance,
+        }),
+        avaibleToBuy() {
+            return Math.floor(this.balance / this.price)
+        },
+    },
     methods: {
         ...mapActions({
             fetchSymbolsWithoutCache: "mySymbols/fetchSymbolsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
+            fetchUser: "user/fetchUser",
             fetchBalanceHistoryWithoutCache: "balanceHistory/fetchBalanceHistoryWithoutCache",
         }),
         async buySymbol() {
@@ -65,6 +75,7 @@ export default {
     async mounted() {
         const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
         this.price = resp.data.price.buy
+        await this.fetchUser()
     }
 }
 </script>

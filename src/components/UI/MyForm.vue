@@ -9,6 +9,7 @@
 .form {
   padding: 25px;
   background: var(--ui-form-background);
+  color: var(--ui-form-color);
   border-radius: 25px;
   font-family: 'Helvetica';
   font-size: 1em;

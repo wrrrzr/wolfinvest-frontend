@@ -31,6 +31,8 @@ export default {
     "price_sell": "selling price",
     "language": "language",
     "no_balance_changes": "you have no balance changes yet",
+    "avaible_to_buy": "avaible",
+    "avaible_to_sell": "avaible",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",

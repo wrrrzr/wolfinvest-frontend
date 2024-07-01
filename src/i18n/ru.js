@@ -31,6 +31,8 @@ export default {
     "price_sell": "цена продажи",
     "language": "язык",
     "no_balance_changes": "у вас пока нету изменений баланса",
+    "avaible_to_buy": "доступно",
+    "avaible_to_sell": "доступно",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",

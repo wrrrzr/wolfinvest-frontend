@@ -4,12 +4,13 @@
         <p>{{ $route.params.symbol }}</p>
         <p>{{ $t('price_sell') }}: {{ floatToCash(price) }}</p>
     </MyCard>
+    <p style="font-size: 1.5em; margin: 5px">{{ $t('avaible_to_sell') }} {{ avaibleToSell }}</p>
     <MyInput v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
     <MyButton @click="sellSymbol">{{ $t('sell') }}</MyButton>
     </MyForm>
 </template>
 <script>
-import { mapActions } from "vuex"
+import { mapActions, mapState } from "vuex"
 import MyCard from "@/components/UI/MyCard"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
@@ -27,6 +28,18 @@ export default {
             price: 0,
             symbol: this.$route.params.symbol,
         }
+    },
+    computed: {
+        ...mapState({
+            symbols: state => state.mySymbols.symbols,
+        }),
+        avaibleToSell() {
+            for (const el of this.symbols) {
+                if (el.code === this.symbol) {
+                    return el.amount
+                }
+            }
+        },
     },
     methods: {
         ...mapActions({
