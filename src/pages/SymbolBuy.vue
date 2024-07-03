@@ -1,7 +1,7 @@
 <template>
     <MyForm>
     <MyCard>
-        <p>{{ $route.params.symbol }}</p>
+        <p>{{ symbolName }}</p>
         <p>{{ $t('price_buy') }}: {{ floatToCash(price) }}</p>
     </MyCard>
     <p style="font-size: 1.5em; margin: 5px">{{ $t('avaible_to_buy') }} {{ avaibleToBuy }}</p>
@@ -27,6 +27,7 @@ export default {
             amount: NaN,
             price: 0,
             symbol: this.$route.params.symbol,
+            symbolName: "",
         }
     },
     computed: {
@@ -75,6 +76,7 @@ export default {
     async mounted() {
         const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
         this.price = resp.data.price.buy
+        this.symbolName = resp.data.name
         await this.fetchUser()
     }
 }
