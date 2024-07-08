@@ -33,6 +33,8 @@ export default {
     "no_balance_changes": "you have no balance changes yet",
     "avaible_to_buy": "avaible",
     "avaible_to_sell": "avaible",
+    "purchase_symbol": "purchase %name%",
+    "sale_symbol": "sale %name%",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",
@@ -75,6 +77,11 @@ export default {
     },
     "title": {
         "root": "wolfinvest",
+        "home": "Home",
+        "symbols": "Symbols",
+        "refills": "Refills",
+        "settings": "Settings",
+        "history": "History",
         "about": "About",
     },
     "text_about": "Are you interested in the idea of making money on stocks, but are you not yet ready to take the risk? Do you want to “just try” without investing any money or risking losing anything? Then you need our Simulator!\nHere you can invest virtual, free “money” in real stocks of real companies at their current price at the moment.\nBuy and sell stocks on our Simulator, and you will see your winnings and losses in real time - exactly the same amount as if you were playing on a real exchange!"

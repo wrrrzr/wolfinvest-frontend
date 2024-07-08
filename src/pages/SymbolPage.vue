@@ -31,7 +31,7 @@ import MyButton from "@/components/UI/MyButton"
 import MyPanel from "@/components/UI/MyPanel"
 import Chart from "@/components/Chart"
 import api from "@/api"
-import { floatToCash } from "@/funcs"
+import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
@@ -74,11 +74,12 @@ export default {
     async mounted() {
         try {
             const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
+            this.price = parseFloat(resp.data.price.buy)
+            this.symbolName = resp.data.name
+            setTitle(resp.data.name)
             const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
             this.symbolChart = resp2.data
             this.symbolChartLoaded = true
-            this.price = parseFloat(resp.data.price.buy)
-            this.symbolName = resp.data.name
         } catch (e) {
             if (e.response.status === 404) {
                 this.notFound = true

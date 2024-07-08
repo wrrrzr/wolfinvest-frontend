@@ -16,7 +16,7 @@ import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import MyForm from "@/components/UI/MyForm"
 import api from "@/api"
-import { floatToCash } from "@/funcs"
+import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
@@ -80,6 +80,7 @@ export default {
         const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
         this.price = resp.data.price.sell
         this.symbolName = resp.data.name
+        setTitle(this.$t('sale_symbol').replace("%name%", resp.data.name))
     }
 }
 </script>

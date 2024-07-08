@@ -13,27 +13,29 @@ import HackUser from "@/pages/HackUser"
 import BalanceHistory from "@/pages/BalanceHistory"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
+import { setTitle } from "@/funcs"
+import i18n from "@/i18n"
 
 const routes = [
     {
         path: '/',
         component: Main,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true, title: "home" },
     },
     {
         path: '/buy-symbols',
         component: BuySymbols,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true, title: "symbols" },
     },
     {
         path: '/refills',
         component: Refills,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true, title: "refills" },
     },
     {
         path: '/about',
         component: About,
-        meta: { requiresAuth: false },
+        meta: { requiresAuth: false, title: "about" },
     },
     {
         path: '/auth',
@@ -42,7 +44,7 @@ const routes = [
     {
         path: '/settings',
         component: Settings,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true, title: "settings" },
     },
     {
         path: '/change-password',
@@ -75,7 +77,7 @@ const routes = [
     {
         path: '/balance-history',
         component: BalanceHistory,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true, title: "history" },
     },
 ]
 
@@ -91,6 +93,11 @@ router.beforeEach((to) => {
             path: '/auth',
             query: { redirect: to.fullPath },
         }
+    }
+    if (to.meta.title != undefined) {
+        setTitle(i18n.global.t("title." + to.meta.title))
+    } else {
+        setTitle(i18n.global.t("title.root"))
     }
 })
 
