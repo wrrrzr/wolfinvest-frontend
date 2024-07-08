@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import VueCookies from 'vue-cookies'
 import App from './App.vue'
-import router from "@/router/router"
+import router from "@/router"
 import store from "@/store"
 import i18n from "@/i18n"
 import {
