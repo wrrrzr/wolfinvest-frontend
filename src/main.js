@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createHead } from '@vueuse/head'
 import VueCookies from 'vue-cookies'
 import App from './App.vue'
 import router from "@/router/router"
@@ -28,4 +29,7 @@ ChartJS.register(
 ChartJS.defaults.color = () => "#717a7a"
 ChartJS.defaults.font.size = 17
 
-createApp(App).use(VueCookies).use(router).use(store).use(i18n).mount("#app")
+const head = createHead()
+
+
+createApp(App).use(head).use(VueCookies).use(router).use(store).use(i18n).mount("#app")
