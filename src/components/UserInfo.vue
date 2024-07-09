@@ -3,7 +3,7 @@
         <p><b>{{ username }}</b></p>
         <p>{{ $t('balance') }}: {{ floatToCash(balance) }}</p>
         <p>{{ $t('total') }}: {{ floatToCash(totalBalance) }}</p>
-        <div style="display: inline-flex; justify-content: space-between; font-size: 0.8em">
+        <div v-if="loaded" style="display: inline-flex; justify-content: space-between; font-size: 0.8em">
             <p :class="isEarn ? 'earn' : 'notearn'">{{ floatToCash(totalEarn.absolute) }} · {{ totalEarn.percent.toFixed(2) }}%</p>
             <p style="font-size: 0.9em">{{ $t('during_all_time') }}</p>
         </div>
@@ -18,6 +18,11 @@ import api from "@/api"
 export default {
     components: {
         MyCard,
+    },
+    data() {
+        return {
+            loaded: false,
+        }
     },
     methods: {
         ...mapActions({
@@ -58,9 +63,11 @@ export default {
         }
     },
     async mounted() {
-        await this.fetchUser()
-        await this.fetchRefills()
-        await this.fetchSymbols()
+        this.fetchUser()
+        this.fetchRefills()
+        this.fetchSymbols().then(resp => {
+            this.loaded = true;
+        })
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!loaded" style="display: flex; justify-content: center">
+    <div v-if="notLoaded" style="display: flex; justify-content: center; align-items: center;">
         <p style="font-size: 3em">{{ $t('symbols_loading') }}</p>
     </div>
     <div v-else class="list">
@@ -17,7 +17,7 @@ export default {
     },
     data() {
         return {
-            loaded: false,
+            notLoaded: true,
         }
     },
     computed: {
@@ -30,9 +30,9 @@ export default {
             fetchSymbols: "mySymbols/fetchSymbols",
         })
     },
-    mounted() {
+    async mounted() {
         this.fetchSymbols().then(resp => {
-            this.loaded = true;
+            this.notLoaded = false
         })
     }
 }
