@@ -35,6 +35,7 @@ export default {
     "avaible_to_sell": "avaible",
     "purchase_symbol": "purchase %name%",
     "sale_symbol": "sale %name%",
+    "symbols_loading": "loading...",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",

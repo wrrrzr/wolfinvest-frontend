@@ -35,6 +35,7 @@ export default {
     "avaible_to_sell": "доступно",
     "purchase_symbol": "покупка %name%",
     "sale_symbol": "продажа %name%",
+    "symbols_loading": "загружаем...",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",

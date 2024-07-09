@@ -1,8 +1,12 @@
 <template>
     <p v-if="notFound" style="font-size: 5em">{{ $t('symbol_not_found') }}</p>
     <div v-else>
-    <p style="font-size: 2em">{{ $t('symbol') }} {{ symbolName }}</p>
-    <b style="font-size: 2em">{{ $t('price') }} {{ floatToCash(price) }}</b>
+    <div style="display: flex; justify-content: center; align-items: center">
+    <MyCard style="display: inline-grid">
+        <p style="margin-bottom: 0; font-size: 1.5em">{{ $t('symbol') }} {{ symbolName }}</p>
+        <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price) }}</p>
+    </MyCard>
+    </div>
     <MyPanel>
     <MyButton @click="m5">{{ $t('history_intervals.5m') }}</MyButton>
     <MyButton @click="h1">{{ $t('history_intervals.1h') }}</MyButton>
@@ -29,13 +33,14 @@ import { mapActions } from "vuex"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import MyPanel from "@/components/UI/MyPanel"
+import MyCard from "@/components/UI/MyCard"
 import Chart from "@/components/Chart"
 import api from "@/api"
 import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
-        MyInput, MyButton, MyPanel, Chart,
+        MyInput, MyButton, MyPanel, Chart, MyCard,
     },
     data() {
         return {
