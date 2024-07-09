@@ -10,7 +10,19 @@ export default {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
                 plugins: {
+                    annotation: {
+                        annotations: []
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        }
+                    },
                     legend: {
                         display: false,
                     },
@@ -19,8 +31,29 @@ export default {
         }
     },
     methods: {
-        updateData(data) {
+        updateData(data, symbolsActions) {
             this.chart.data = data
+            let annotations = []
+            let borderColor = ''
+            symbolsActions.forEach((el) => {
+                if (el.type === 1) {
+                    borderColor = 'green'
+                } else if (el.type === 2) {
+                    borderColor = 'red'
+                } else {
+                    borderColor = 'blue'
+                }
+                annotations.push({
+                    type: 'line',
+                    xMin: el.time,
+                    xMax: el.time,
+                    borderColor: borderColor,
+                    borderWidth: 2,
+                    borderDash: [],
+                    drawLine: 'vertical'
+                })
+            })
+            this.options.plugins.annotation.annotations = annotations
             this.chart.update()
         },
     },

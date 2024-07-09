@@ -12,7 +12,7 @@
     <MyButton @click="mo3">{{ $t('history_intervals.3mo') }}</MyButton>
     </MyPanel>
     <div class="chart">
-        <Chart ref="chart" v-if="symbolChartLoaded" :interval="interval" :symbolsData="symbolChart"/>
+        <Chart ref="chart"/>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
@@ -78,9 +78,13 @@ export default {
             this.symbolName = resp.data.name
             setTitle(resp.data.name)
             const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
-            this.symbolChart = resp2.data
-            this.symbolChartLoaded = true
+            const resp3 = await api.get(`symbols/get-my-symbols-actions`)
+            let symbolsActions = []
+            resp3.data.forEach((el) => { if (el.ticker == this.symbol) symbolsActions.push(el) })
+            this.symbolChart = resp.data
+            this.$refs.chart.updateData(this.interval, resp2.data, symbolsActions)
         } catch (e) {
+            console.log(e)
             if (e.response.status === 404) {
                 this.notFound = true
             }
@@ -89,8 +93,11 @@ export default {
     watch: {
         async interval(newInterval) {
             const resp = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
+            const resp2 = await api.get(`symbols/get-my-symbols-actions`)
+            let symbolsActions = []
+            resp2.data.forEach((el) => { if (el.ticker == this.symbol) symbolsActions.push(el) })
             this.symbolChart = resp.data
-            this.$refs.chart.updateData(this.interval, resp.data)
+            this.$refs.chart.updateData(this.interval, resp.data, symbolsActions)
         },
     },
 } 

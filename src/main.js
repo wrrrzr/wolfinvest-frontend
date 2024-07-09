@@ -15,12 +15,14 @@ import {
     Tooltip,
     Legend
 } from 'chart.js'
+import AnnotationPlugin from 'chartjs-plugin-annotation';
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
     PointElement,
     LineElement,
+    AnnotationPlugin,
     Title,
     Tooltip,
     Legend

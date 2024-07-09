@@ -5,19 +5,26 @@
 import VueChartLine from "@/components/VueChartLine"
 import api from "@/api"
 
+const findClosest = (number, array) => {
+  let closestNumber = array[0];
+  let minDiff = Math.abs(number - closestNumber);
+
+  for (const num of array) {
+    let diff = Math.abs(number - num);
+    if (diff < minDiff) {
+      closestNumber = num;
+      minDiff = diff;
+    }
+  }
+
+  return closestNumber;
+}
+
+const toUnixTimestamp = (date) => parseInt((new Date(date).getTime() / 1000).toFixed(0))
+
 export default {
     components: {
         VueChartLine,
-    },
-    props: {
-        interval: {
-            type: Number,
-            required: true,
-        },
-        symbolsData: {
-            type: Array,
-            required: true,
-        },
     },
     data() {
         return {
@@ -43,10 +50,10 @@ export default {
             let hours = date.getHours()
             let minutes = date.getMinutes()
             if (hours < 10) {
-                hours = hours + "0"
+                hours = "0" + hours
             }
             if (minutes < 10) {
-                minutes = minutes + "0"
+                minutes = "0" + minutes
             }
             return `${hours}:${minutes}`
         },
@@ -82,24 +89,35 @@ export default {
             const month = date.getMonth()
             return `${month}-${year}`
         },
-    updateData(interval, newdata) {
+    updateData(interval, newdata, symbolsActions) {
         const timestamps = []
         const prices = []
+
         newdata.forEach((el) => {
             timestamps.push(this.formatDate(interval, new Date(el.timestamp)))
             prices.push(el.price.buy)
         })
+
+        let ddd = []
+        newdata.forEach((el) => {
+            ddd.push(toUnixTimestamp(new Date(el.timestamp)))
+        })
+
+        let newSymbolsActions = []
+        let time = 0
+        symbolsActions.forEach((el) => {
+            time = findClosest(toUnixTimestamp(el.created_at), ddd)
+            newSymbolsActions.push({type: el.action, time: this.formatDate(interval, new Date(time * 1000))})
+        })
+
         let borderColor = 'rgba(0, 0, 0, 0.5)'
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             borderColor = '#a0a0a050'
         }
         this.chartData = {labels: timestamps, datasets: [{borderColor: borderColor, backgroundColor: 'Tomato', data: prices}]}
         this.loaded = true
-        this.$refs.line.updateData(this.chartData)
+        this.$refs.line.updateData(this.chartData, newSymbolsActions)
     }
-    },
-    mounted() {
-        this.updateData(this.interval, this.symbolsData)
     },
 }
 </script>
