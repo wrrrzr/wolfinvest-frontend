@@ -83,11 +83,9 @@ export default {
             this.symbolName = resp.data.name
             setTitle(resp.data.name)
             const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
-            const resp3 = await api.get(`symbols/get-my-symbols-actions`)
-            let symbolsActions = []
-            resp3.data.forEach((el) => { if (el.ticker == this.symbol) symbolsActions.push(el) })
+            const resp3 = await api.get(`symbols_actions/get-my-symbols-actions?symbol=${this.symbol}`)
             this.symbolChart = resp.data
-            this.$refs.chart.updateData(this.interval, resp2.data, symbolsActions)
+            this.$refs.chart.updateData(this.interval, resp2.data, resp3.data)
         } catch (e) {
             console.log(e)
             if (e.response.status === 404) {
@@ -98,11 +96,9 @@ export default {
     watch: {
         async interval(newInterval) {
             const resp = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
-            const resp2 = await api.get(`symbols/get-my-symbols-actions`)
-            let symbolsActions = []
-            resp2.data.forEach((el) => { if (el.ticker == this.symbol) symbolsActions.push(el) })
+            const resp2 = await api.get(`symbols_actions/get-my-symbols-actions?symbol=${this.symbol}`)
             this.symbolChart = resp.data
-            this.$refs.chart.updateData(this.interval, resp.data, symbolsActions)
+            this.$refs.chart.updateData(this.interval, resp.data, resp2.data)
         },
     },
 } 
