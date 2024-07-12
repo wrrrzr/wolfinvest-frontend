@@ -8,12 +8,12 @@
     </MyCard>
     </div>
     <MyPanel>
-    <MyButton @click="m5">{{ $t('history_intervals.5m') }}</MyButton>
-    <MyButton @click="h1">{{ $t('history_intervals.1h') }}</MyButton>
-    <MyButton @click="d1">{{ $t('history_intervals.1d') }}</MyButton>
-    <MyButton @click="wk1">{{ $t('history_intervals.1wk') }}</MyButton>
-    <MyButton @click="mo1">{{ $t('history_intervals.1mo') }}</MyButton>
-    <MyButton @click="mo3">{{ $t('history_intervals.3mo') }}</MyButton>
+    <MyButton @click="m5">{{ $t('history_intervals.1d') }}</MyButton>
+    <MyButton @click="h1">{{ $t('history_intervals.1wk') }}</MyButton>
+    <MyButton @click="d1">{{ $t('history_intervals.1mo') }}</MyButton>
+    <MyButton @click="wk1">{{ $t('history_intervals.3mo') }}</MyButton>
+    <MyButton @click="mo1">{{ $t('history_intervals.1y') }}</MyButton>
+    <MyButton @click="mo3">{{ $t('history_intervals.alltime') }}</MyButton>
     </MyPanel>
     <div class="chart">
         <Chart ref="chart"/>

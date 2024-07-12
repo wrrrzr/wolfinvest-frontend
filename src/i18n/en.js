@@ -69,12 +69,12 @@ export default {
         "3": "you sold symbols and get %amount%",
     },
     "history_intervals": {
-        "5m": "5 minutes",
-        "1h": "hour",
         "1d": "day",
         "1wk": "week",
         "1mo": "month",
-        "3mo": "3 months"
+        "3mo": "3 months",
+        "1y": "year",
+        "alltime": "during all time",
     },
     "title": {
         "root": "wolfinvest",
