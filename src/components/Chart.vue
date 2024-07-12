@@ -63,9 +63,9 @@ export default {
             const day = date.getDay()
             let hours = date.getHours()
             if (hours < 10) {
-                hours = hours + "0"
+                hours = "0" + hours
             }
-            return `${day}-${month}-${year} ${hours}:00`
+            return `${day}-${month} ${hours}:00`
         },
         format1d(date) {
             const year = date.getFullYear()
