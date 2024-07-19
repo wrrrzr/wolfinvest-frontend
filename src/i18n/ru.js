@@ -36,6 +36,7 @@ export default {
     "purchase_symbol": "покупка %name%",
     "sale_symbol": "продажа %name%",
     "symbols_loading": "загружаем...",
+    "company_logo": "логотип компании %name%",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",

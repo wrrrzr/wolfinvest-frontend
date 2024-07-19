@@ -3,8 +3,13 @@
     <div v-else>
     <div style="display: flex; justify-content: center; align-items: center">
     <MyCard style="display: inline-grid">
-        <p style="margin-bottom: 0; font-size: 1.5em">{{ $t('symbol') }} {{ symbolName }}</p>
-        <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price) }}</p>
+        <div style="display: flex">
+            <SymbolIcon :ticker="symbol" :name="symbolName"/>
+            <div>
+                <p style="margin-bottom: 0; font-size: 1.5em">{{ $t('symbol') }} {{ symbolName }}</p>
+                <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price) }}</p>
+            </div>
+        </div>
     </MyCard>
     </div>
     <MyPanel>
@@ -35,12 +40,13 @@ import MyButton from "@/components/UI/MyButton"
 import MyPanel from "@/components/UI/MyPanel"
 import MyCard from "@/components/UI/MyCard"
 import Chart from "@/components/Chart"
+import SymbolIcon from "@/components/SymbolIcon"
 import api from "@/api"
 import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
-        MyInput, MyButton, MyPanel, Chart, MyCard,
+        MyInput, MyButton, MyPanel, Chart, MyCard, SymbolIcon,
     },
     data() {
         return {

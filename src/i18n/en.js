@@ -36,6 +36,7 @@ export default {
     "purchase_symbol": "purchase %name%",
     "sale_symbol": "sale %name%",
     "symbols_loading": "loading...",
+    "company_logo": "%name% company logo",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",
