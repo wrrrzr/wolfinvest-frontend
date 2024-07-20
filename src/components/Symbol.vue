@@ -2,7 +2,7 @@
     <Link :to="'/symbol/' + code">
         <MyCard>
             <div style="display: inline-flex">
-                <SymbolIcon :ticker="code" :name="name"/>
+                <SymbolIcon :ticker="code" :name="name" style="margin-left: 5px; margin-right: 10px"/>
                 <div>
                     <p style="user-select: none"><b>{{ name }}</b></p>
                     <p style="user-select: none">{{ $t('amount') }}: {{ amount }}</p>

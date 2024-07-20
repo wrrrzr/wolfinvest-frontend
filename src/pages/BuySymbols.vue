@@ -3,9 +3,14 @@
         <MyInput v-bind:value="symbolName" @input="onInput" :placeholder="$t('symbol')"/>
     </div>
     <div class="center">
-        <BtnLink v-for="i in tickers" :to="'/symbol/' + i.ticker">
-            {{ i.name }}
-        </BtnLink>
+        <div style="display: grid">
+            <Link v-for="i in tickers" :to="'/symbol/' + i.ticker">
+                <MyCard style="display: flex">
+                    <SymbolIcon :ticker="i.ticker" :name="i.name"/>
+                    <p style="font-size: 1.5em; margin: 10px">{{ i.name }}</p>
+                </MyCard>
+            </Link>
+        </div>
     </div>
     <div v-if="symbolNotFound">
     <div class="center">
@@ -20,13 +25,15 @@
 <script>
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
+import MyCard from "@/components/UI/MyCard"
 import Symbol from "@/components/Symbol"
-import BtnLink from "@/components/BtnLink"
+import Link from "@/components/Link"
+import SymbolIcon from "@/components/SymbolIcon"
 import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, Symbol, BtnLink,
+        MyInput, MyButton, MyCard, Symbol, Link, SymbolIcon,
     },
     data() {
         return {
