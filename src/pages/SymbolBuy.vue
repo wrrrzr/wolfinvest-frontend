@@ -2,7 +2,7 @@
     <MyForm>
     <MyCard>
         <p>{{ symbolName }}</p>
-        <p>{{ $t('price_buy') }}: {{ floatToCash(price) }}</p>
+        <p>{{ $t('price_buy') }}: {{ floatToCash(price, currency) }}</p>
     </MyCard>
     <p style="font-size: 1.5em; margin: 5px">{{ $t('avaible_to_buy') }} {{ avaibleToBuy }}</p>
     <MyInput v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
@@ -26,6 +26,7 @@ export default {
         return {
             amount: NaN,
             price: 0,
+            currency: "",
             symbol: this.$route.params.symbol,
             symbolName: "",
         }
@@ -77,6 +78,7 @@ export default {
         const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
         this.price = resp.data.price.buy
         this.symbolName = resp.data.name
+        this.currency = resp.data.price.currency
         setTitle(this.$t('purchase_symbol').replace("%name%", resp.data.name))
         await this.fetchUser()
     }

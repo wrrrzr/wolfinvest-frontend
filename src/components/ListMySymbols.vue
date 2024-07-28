@@ -3,7 +3,7 @@
         <p style="font-size: 3em">{{ $t('symbols_loading') }}</p>
     </div>
     <div v-else class="list">
-        <Symbol v-for="i in symbols" :name="i.name" :code="i.code" :amount="i.amount" :priceOne="i.price.buy" :earn="i.earn"/>
+        <Symbol v-for="i in symbols" :name="i.name" :code="i.code" :amount="i.amount" :priceOne="i.price.buy" :earn="i.earn" :currency="i.price.currency"/>
     </div>
 </template>
 <script>

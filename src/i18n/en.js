@@ -68,6 +68,8 @@ export default {
         "1": "the administrator changed balance to %amount%",
         "2": "you bought %amount% worth of symbols",
         "3": "you sold symbols and get %amount%",
+        "4": "you bought %amount% worth of currency",
+        "5": "you sold currency and get %amount%",
     },
     "history_intervals": {
         "1d": "day",

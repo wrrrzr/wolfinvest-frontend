@@ -7,7 +7,7 @@
             <SymbolIcon :ticker="symbol" :name="symbolName"/>
             <div>
                 <p style="margin-bottom: 0; font-size: 1.5em">{{ $t('symbol') }} {{ symbolName }}</p>
-                <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price) }}</p>
+                <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price, currency) }}</p>
             </div>
         </div>
     </MyCard>
@@ -52,6 +52,7 @@ export default {
         return {
             amount: NaN,
             price: 0,
+            currency: "",
             symbol: this.$route.params.symbol,
             symbolChartLoaded: false,
             notFound: false,
@@ -86,6 +87,7 @@ export default {
         try {
             const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
             this.price = parseFloat(resp.data.price.buy)
+            this.currency = resp.data.price.currency
             this.symbolName = resp.data.name
             setTitle(resp.data.name)
             const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
