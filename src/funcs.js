@@ -9,7 +9,6 @@ const currencyChars = {
 }
 
 const currencyToChar = (currency) => {
-    console.log(currency)
     if (currencyChars[currency] === undefined)
         return "?"
     return currencyChars[currency]
