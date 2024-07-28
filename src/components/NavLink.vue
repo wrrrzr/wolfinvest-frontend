@@ -28,8 +28,16 @@ export default {
   margin: 0px;
 }
 
-.link:hover {
-  background-color: var(--ui-button-hover-background-color);
-  cursor: pointer;
+@media (hover: hover) {
+    .link:hover {
+        background-color: var(--ui-button-hover-background-color);
+        cursor: pointer;
+    }
+}
+
+@media (hover: none) {
+    .link:active {
+        background-color: var(--ui-button-hover-background-color);
+    }
 }
 </style>

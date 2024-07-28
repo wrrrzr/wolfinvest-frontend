@@ -17,8 +17,16 @@
   margin: 5px;
 }
 
-.btn:hover {
-  background-color: var(--ui-button-hover-background-color);
-  cursor: pointer;
+@media (hover: hover) {
+    .btn:hover {
+        background-color: var(--ui-button-hover-background-color);
+        cursor: pointer;
+    }
+}
+
+@media (hover: none) {
+    .btn:active {
+        background-color: var(--ui-button-hover-background-color);
+    }
 }
 </style>
