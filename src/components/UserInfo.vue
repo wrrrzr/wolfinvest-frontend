@@ -62,12 +62,10 @@ export default {
             return this.totalEarn.percent >= 0
         }
     },
-    async mounted() {
+    mounted() {
         this.fetchUser()
         this.fetchRefills()
-        this.fetchSymbols().then(resp => {
-            this.loaded = true;
-        })
+        this.loaded = true
     }
 }
 </script>
