@@ -6,6 +6,8 @@ const currencyChars = {
     "UAH": "₴",
     "RUB": "₽",
     "HKD": "HK$",
+    "CNY": "¥",
+    "JPY": "¥",
 }
 
 const currencyToChar = (currency) => {
