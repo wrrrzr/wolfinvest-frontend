@@ -1,5 +1,5 @@
 <template>
-    <img :src="'/tickers/' + ticker + '.png'" :alt="$t('company_logo').replace('%name%', name)" style="width: 100px; height: 100px; border-radius: 64px"/>
+    <img :src="'/tickers/' + ticker + '.png'" :alt="$t('company_logo').replace('%name%', name)" class="icon"/>
 </template>
 <script>
 export default {
@@ -15,3 +15,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+.icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 64px;
+}
+</style>
