@@ -42,6 +42,7 @@ export default {
                     return el.amount
                 }
             }
+            return 0.0
         },
     },
     methods: {
