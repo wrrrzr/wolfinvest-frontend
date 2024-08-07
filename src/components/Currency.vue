@@ -1,11 +1,11 @@
 <template>
-    <Link :to="'/currency/' + name">
+    <Link :to="'/currency/' + ticker">
         <MyCard>
             <div style="display: inline-flex">
                 <CurrencyIcon :ticker="ticker" :name="name" style="margin-left: 5px; margin-right: 10px"/>
                 <div>
                     <p style="user-select: none"><b>{{ name }}</b></p>
-                    <p style="user-select: none">{{ $t('amount') }}: {{ floatToCash(amount, name) }}</p>
+                    <p style="user-select: none">{{ $t('amount') }}: {{ floatToCash(amount, ticker) }}</p>
                 </div>
             </div>
         </MyCard>
@@ -26,10 +26,6 @@ export default {
             type: String,
             required: true,
         },
-        name: {
-            type: String,
-            required: true,
-        },
         amount: {
             type: Number,
             required: true,
@@ -37,6 +33,11 @@ export default {
     },
     methods: {
         floatToCash,
+    },
+    computed: {
+        name() {
+            return this.$t('currencies.' + this.ticker)
+        }
     }
 }
 </script>

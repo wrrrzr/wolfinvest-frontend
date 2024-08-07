@@ -4,7 +4,7 @@
     </div>
     <div v-else class="list">
         <Symbol v-for="i in symbols" :name="i.name" :code="i.code" :amount="i.amount" :priceOne="i.price.buy" :earn="i.earn" :currency="i.price.currency"/>
-        <Currency v-for="(k, v) in currencies" :ticker="v" :name="v" :amount="k"/>
+        <Currency v-for="i in currencies" :ticker="i.ticker" :amount="i.amount"/>
     </div>
 </template>
 <script>
