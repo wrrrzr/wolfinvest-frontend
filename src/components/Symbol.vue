@@ -2,9 +2,9 @@
     <Link :to="'/symbol/' + code">
         <MyCard>
             <div style="display: inline-flex">
-                <SymbolIcon :ticker="code" :name="name" style="margin-left: 5px; margin-right: 10px"/>
+                <SymbolIcon :ticker="code" :name="symbolName" style="margin-left: 5px; margin-right: 10px"/>
                 <div>
-                    <p style="user-select: none"><b>{{ name }}</b></p>
+                    <p style="user-select: none"><b>{{ symbolName }}</b></p>
                     <p style="user-select: none">{{ $t('amount') }}: {{ amount }}</p>
                     <p style="user-select: none">{{ $t('price') }}: {{ floatToCash(priceOne * amount, currency) }} ({{ floatToCash(priceOne, currency) }})</p>
                     <div style="display: inline-flex; justify-content: space-between; font-size: 0.7em; font-family: sans-serif">
@@ -52,6 +52,11 @@ export default {
         },
     },
     computed: {
+        symbolName() {
+            if (this.name === "???")
+                return this.code
+            return this.name
+        },
         isEarn() {
             return this.earn.precent >= 0
         }
