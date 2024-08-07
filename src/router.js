@@ -11,6 +11,7 @@ import ChangePassword from "@/pages/ChangePassword"
 import Admin from "@/pages/Admin"
 import HackUser from "@/pages/HackUser"
 import BalanceHistory from "@/pages/BalanceHistory"
+import CurrencyPage from "@/pages/CurrencyPage"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 import { setTitle } from "@/funcs"
@@ -78,6 +79,10 @@ const routes = [
         path: '/balance-history',
         component: BalanceHistory,
         meta: { requiresAuth: true, title: "history" },
+    },
+    {
+        path: '/currency/:currency',
+        component: CurrencyPage,
     },
 ]
 
