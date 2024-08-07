@@ -1,4 +1,5 @@
 export default {
+    "currencies_list": "currencies",
     "username": "username",
     "password": "password",
     "log_in": "log in",
@@ -102,6 +103,8 @@ export default {
         "CNY": "yuan",
         "RUB": "ruble",
         "HKD": "hong kong dollar",
+        "JPY": "yen",
+        "GBP": "pound sterling",
     },
     "text_about": "Are you interested in the idea of making money on stocks, but are you not yet ready to take the risk? Do you want to “just try” without investing any money or risking losing anything? Then you need our Simulator!\nHere you can invest virtual, free “money” in real stocks of real companies at their current price at the moment.\nBuy and sell stocks on our Simulator, and you will see your winnings and losses in real time - exactly the same amount as if you were playing on a real exchange!"
 }

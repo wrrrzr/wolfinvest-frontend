@@ -12,6 +12,15 @@
             </Link>
         </div>
     </div>
+    <ListSymbols :title="$t('currencies_list')">
+        <CurrencyInList :ticker="'EUR'"/>
+        <CurrencyInList :ticker="'UAH'"/>
+        <CurrencyInList :ticker="'RUB'"/>
+        <CurrencyInList :ticker="'HKD'"/>
+        <CurrencyInList :ticker="'CNY'"/>
+        <CurrencyInList :ticker="'JPY'"/>
+        <CurrencyInList :ticker="'GBP'"/>
+    </ListSymbols>
     <div v-if="symbolNotFound">
     <div class="center">
         <p>{{ $t('enter_ticker') }}</p>
@@ -29,11 +38,13 @@ import MyCard from "@/components/UI/MyCard"
 import Symbol from "@/components/Symbol"
 import Link from "@/components/Link"
 import SymbolIcon from "@/components/SymbolIcon"
+import ListSymbols from "@/components/ListSymbols"
+import CurrencyInList from "@/components/CurrencyInList"
 import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, MyCard, Symbol, Link, SymbolIcon,
+        MyInput, MyButton, MyCard, Symbol, Link, SymbolIcon, ListSymbols, CurrencyInList,
     },
     data() {
         return {
