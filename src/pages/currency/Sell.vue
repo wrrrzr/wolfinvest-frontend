@@ -50,6 +50,7 @@ export default {
             fetchSymbolsWithoutCache: "mySymbols/fetchSymbolsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
             fetchCurrenciesWithoutCache: "currencies/fetchCurrenciesWithoutCache",
+            fetchCurrencies: "currencies/fetchCurrencies",
         }),
         async sellCurrency() {
             if (this.amount === "") {
@@ -83,6 +84,7 @@ export default {
         api.get(`currency/get-price?currency=${this.currency}`).then(resp => {
             this.price = resp.data
         })
+        this.fetchCurrencies()
         setTitle(this.$t('sale_currency').replace("%name%", this.currencyName))
     }
 }
