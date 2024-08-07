@@ -45,6 +45,7 @@ export default {
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
             fetchUser: "user/fetchUser",
             fetchBalanceHistoryWithoutCache: "balanceHistory/fetchBalanceHistoryWithoutCache",
+            fetchCurrenciesWithoutCache: "currencies/fetchCurrenciesWithoutCache",
         }),
         async buySymbol() {
             if (this.amount === "") {
@@ -68,9 +69,10 @@ export default {
             } else {
                 alert(this.$t('alerts.symbols_purchased'))
             }
-            await this.fetchSymbolsWithoutCache()
-            await this.fetchUserWithoutCache()
-            await this.fetchBalanceHistoryWithoutCache()
+            this.fetchSymbolsWithoutCache()
+            this.fetchUserWithoutCache()
+            this.fetchBalanceHistoryWithoutCache()
+            this.fetchCurrenciesWithoutCache()
         },
         floatToCash,
     },

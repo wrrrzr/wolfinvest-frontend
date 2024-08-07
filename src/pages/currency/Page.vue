@@ -5,7 +5,7 @@
             <CurrencyIcon :ticker="currency" :name="currencyName" style="margin-left: 5px; margin-right: 10px"/>
             <div>
                 <p style="margin-bottom: 0; font-size: 1.5em">{{ currencyName }}</p>
-                <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price, "USD") }}</p>
+                <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price) }}</p>
             </div>
         </div>
     </MyCard>

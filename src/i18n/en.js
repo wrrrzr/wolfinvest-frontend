@@ -38,6 +38,8 @@ export default {
     "symbols_loading": "loading...",
     "company_logo": "%name% company logo",
     "currency_logo": "%name% logo",
+    "purchase_currency": "purchase %name%",
+    "sale_currency": "sale %name%",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",
@@ -62,7 +64,11 @@ export default {
         "incorrect_password": "incorrect password",
         "balance_is_set": "balance is set",
         "password_is_set": "password is set",
-        "user_is_deleted": "user is deleted"
+        "user_is_deleted": "user is deleted",
+        "currency_purchased": "currency purchased",
+        "currencies_purchased": "currencies purchased",
+        "currency_sold": "currency sold",
+        "currencies_sold": "currencies sold",
     },
     "reason": {
         "0": "replenishment in the amount of %amount%",

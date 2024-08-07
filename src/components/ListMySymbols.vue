@@ -34,11 +34,11 @@ export default {
             fetchCurrencies: "currencies/fetchCurrencies",
         })
     },
-    async mounted() {
-        await this.fetchSymbols()
-        await this.fetchCurrencies()
-        console.log(this.currencies)
-        this.loaded = true
+    mounted() {
+        this.fetchSymbols().then(resp => {
+            this.loaded = true
+        })
+        this.fetchCurrencies()
     }
 }
 </script>

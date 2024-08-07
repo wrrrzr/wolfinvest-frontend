@@ -38,6 +38,8 @@ export default {
     "symbols_loading": "загружаем...",
     "company_logo": "логотип компании %name%",
     "currency_logo": "логотип %name%",
+    "purchase_currency": "купить %name%",
+    "sale_currency": "продать %name%",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",
@@ -62,7 +64,11 @@ export default {
         "incorrect_password": "неправильный пароль",
         "balance_is_set": "баланс установлен",
         "password_is_set": "пароль установлен",
-        "user_is_deleted": "пользователь удалён"
+        "user_is_deleted": "пользователь удалён",
+        "currency_purchased": "валюта куплена",
+        "currencies_purchased": "валюта куплена",
+        "currency_sold": "валюта продана",
+        "currencies_sold": "валюта продана",
     },
     "reason": {
         "0": "вы пополнили баланс на %amount%",

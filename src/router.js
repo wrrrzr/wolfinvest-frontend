@@ -11,7 +11,9 @@ import ChangePassword from "@/pages/ChangePassword"
 import Admin from "@/pages/Admin"
 import HackUser from "@/pages/HackUser"
 import BalanceHistory from "@/pages/BalanceHistory"
-import CurrencyPage from "@/pages/CurrencyPage"
+import CurrencyPage from "@/pages/currency/Page"
+import CurrencyBuy from "@/pages/currency/Buy"
+import CurrencySell from "@/pages/currency/Sell"
 import { createRouter, createWebHistory } from "vue-router"
 import VueCookies from 'vue-cookies'
 import { setTitle } from "@/funcs"
@@ -83,6 +85,14 @@ const routes = [
     {
         path: '/currency/:currency',
         component: CurrencyPage,
+    },
+    {
+        path: '/currency/:currency/buy',
+        component: CurrencyBuy,
+    },
+    {
+        path: '/currency/:currency/sell',
+        component: CurrencySell,
     },
 ]
 
