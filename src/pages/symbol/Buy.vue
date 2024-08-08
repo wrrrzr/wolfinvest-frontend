@@ -33,8 +33,16 @@ export default {
     },
     computed: {
         ...mapState({
-            balance: state => state.user.balance,
+            currencies: state => state.currencies.currencies,
         }),
+        balance() {
+            for (const el of this.currencies) {
+                if (el.ticker === this.currency) {
+                    return el.amount
+                }
+            }
+            return 0.0
+        },
         avaibleToBuy() {
             return Math.floor(this.balance / this.price)
         },
