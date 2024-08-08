@@ -1,10 +1,6 @@
 <template>
     <MyForm>
         <div>
-            <MyInput v-bind:value="newBalance" @input="newBalance = $event.target.value" :placeholder="$t('balance')" type="number"/>
-            <MyButton @click="setBalance">{{ $t('set_balance') }}</MyButton>
-        </div>
-        <div>
             <MyInput v-bind:value="newPassword" @input="newPassword = $event.target.value" :placeholder="$t('password')"/>
             <MyButton @click="setPassword">{{ $t('set_password') }}</MyButton>
         </div>
@@ -24,7 +20,6 @@ export default {
     },
     data() {
         return {
-            newBalance: NaN,
             newPassword: "",
         }
     },
@@ -32,11 +27,6 @@ export default {
         ...mapActions({
             "fetchAllUsersWithoutCache": "admin/fetchAllUsersWithoutCache",
         }),
-        async setBalance() {
-            await api.post(`/admin/set-user-balance?target=${this.$route.params.id}&new_balance=${this.newBalance}`)
-            await this.fetchAllUsersWithoutCache()
-            alert(this.$t('alerts.balance_is_set'))
-        },
         async setPassword() {
             await api.post("/admin/change-user-password", { target: this.$route.params.id, new_password: this.newPassword })
             await this.fetchAllUsersWithoutCache()
