@@ -41,6 +41,8 @@ export default {
     "currency_logo": "логотип %name%",
     "purchase_currency": "купить %name%",
     "sale_currency": "продать %name%",
+    "vegan_companies": "веганские компании",
+    "banks": "банки",
     "navbar": {
         "home": "Главная",
         "symbols": "Акции",

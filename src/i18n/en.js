@@ -41,6 +41,8 @@ export default {
     "currency_logo": "%name% logo",
     "purchase_currency": "purchase %name%",
     "sale_currency": "sale %name%",
+    "vegan_companies": "vegan companies",
+    "banks": "banks",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",
