@@ -1,5 +1,5 @@
 <template>
-    <div class="center">
+    <div class="center" style="margin-bottom: 5px">
         <MyInput v-bind:value="symbolName" @input="onInput" :placeholder="$t('symbol')"/>
     </div>
     <div class="center">

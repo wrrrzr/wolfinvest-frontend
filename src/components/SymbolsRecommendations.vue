@@ -1,10 +1,10 @@
 <template>
-    <ListSymbols :title="$t('vegan_companies')" style="margin-bottom: 50px">
+    <ListSymbols :title="$t('vegan_companies')" style="margin-bottom: 15px">
         <SymbolInList :ticker="'BYND'" :name="'beyond meat'"/>
         <SymbolInList :ticker="'OTLY'" :name="'oatly'"/>
         <SymbolInList :ticker="'VEZ.F'" :name="'veganz'"/>
     </ListSymbols>
-    <ListSymbols :title="$t('banks')">
+    <ListSymbols :title="$t('banks')" style="margin-bottom: 15px">
         <SymbolInList :ticker="'SBER'" :name="'sberbank'"/>
         <SymbolInList :ticker="'BAC'" :name="'bank of america'"/>
     </ListSymbols>
