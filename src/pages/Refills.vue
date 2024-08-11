@@ -8,7 +8,7 @@
     </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex"
+import { mapActions, mapGetters, mapState } from "vuex"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Refill from "@/components/Refill"
@@ -21,8 +21,12 @@ export default {
     data() {
         return {
             amount: NaN,
-            refills: [],
         }
+    },
+    computed: {
+        ...mapState({
+            refills: state => state.refills.refills,
+        }),
     },
     methods: {
         ...mapActions({
@@ -30,9 +34,7 @@ export default {
             fetchRefillsWithoutCache: "refills/fetchRefillsWithoutCache",
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
             fetchBalanceHistoryWithoutCache: "balanceHistory/fetchBalanceHistoryWithoutCache",
-        }),
-        ...mapGetters({
-            getReverse: "refills/getReverse",
+            fetchCurrenciesWithoutCache: "currencies/fetchCurrenciesWithoutCache",
         }),
         async takeRefill() {
             if (this.amount === "") {
@@ -45,15 +47,14 @@ export default {
                 return
             }
             const resp = await api.post(`/refills/take-refill?amount=${amount}`)
-            await this.fetchRefillsWithoutCache()
-            await this.fetchUserWithoutCache()
-            await this.fetchBalanceHistoryWithoutCache()
-            this.refills = this.getReverse()
+            this.fetchRefillsWithoutCache()
+            this.fetchUserWithoutCache()
+            this.fetchBalanceHistoryWithoutCache()
+            this.fetchCurrenciesWithoutCache()
         },
     },
-    async mounted() {
-        await this.fetchRefills()
-        this.refills = this.getReverse()
+    mounted() {
+        this.fetchRefills()
     }
 }
 </script>

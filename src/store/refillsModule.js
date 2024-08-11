@@ -7,9 +7,6 @@ export default {
             cached: false,
         }
     },
-    getters: {
-        getReverse: (state) => [].concat(state.refills).reverse()
-    },
     mutations: {
         setRefills: (state, refills) => { state.refills = refills },
         trueCached: (state) => { state.cached = true },
@@ -20,12 +17,12 @@ export default {
                 return
             }
             const resp = await api.get("/refills/get-my-refills")
-            commit("setRefills", resp.data)
+            commit("setRefills", [].concat(resp.data).reverse())
             commit("trueCached")
         },
         async fetchRefillsWithoutCache({ state, commit }) {
             const resp = await api.get("/refills/get-my-refills")
-            commit("setRefills", resp.data)
+            commit("setRefills", [].concat(resp.data).reverse())
             commit("trueCached")
         }
     },
