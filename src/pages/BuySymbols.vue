@@ -2,6 +2,15 @@
     <div class="center" style="margin-bottom: 5px">
         <MyInput v-bind:value="symbolName" @input="onInput" :placeholder="$t('symbol')"/>
     </div>
+    <div v-if="symbolNotFound">
+    <div class="center" style="margin-bottom: 5px">
+        <p>{{ $t('enter_ticker') }}</p>
+    </div>
+    <div class="center">
+        <MyInput v-bind:value="tickerName" @input="tickerName = $event.target.value" :placeholder="$t('ticker')"/>
+        <MyButton @click="selectTicker">{{ $t('select') }}</MyButton>
+    </div>
+    </div>
     <div class="center">
         <div style="display: grid">
             <Link v-for="i in tickers" :to="'/symbol/' + i.ticker">
@@ -13,15 +22,6 @@
         </div>
     </div>
     <SymbolsRecommendations/>
-    <div v-if="symbolNotFound">
-    <div class="center">
-        <p>{{ $t('enter_ticker') }}</p>
-    </div>
-    <div class="center">
-        <MyInput v-bind:value="tickerName" @input="tickerName = $event.target.value" :placeholder="$t('ticker')"/>
-        <MyButton @click="selectTicker">{{ $t('select') }}</MyButton>
-    </div>
-    </div>
 </template>
 <script>
 import MyInput from "@/components/UI/MyInput"
