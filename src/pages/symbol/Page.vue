@@ -82,6 +82,11 @@ export default {
             this.$router.push(this.sellSymbolFormat)
         },
         floatToCash,
+        async getSymbolsActions() {
+            if (!this.$cookies.isKey("token"))
+                return []
+            return (await api.get(`symbols_actions/get-my-symbols-actions?symbol=${this.symbol}`)).data
+        }
     },
     async mounted() {
         try {
@@ -90,23 +95,22 @@ export default {
             this.currency = resp.data.price.currency
             this.symbolName = resp.data.name
             setTitle(resp.data.name)
-            const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
-            const resp3 = await api.get(`symbols_actions/get-my-symbols-actions?symbol=${this.symbol}`)
             this.symbolChart = resp.data
-            this.$refs.chart.updateData(this.interval, resp2.data, resp3.data)
         } catch (e) {
-            console.log(e)
             if (e.response.status === 404) {
                 this.notFound = true
             }
         }
+        const resp2 = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`)
+        const resp3 = await this.getSymbolsActions(this.symbol)
+        this.$refs.chart.updateData(this.interval, resp2.data, resp3)
     },
     watch: {
         async interval(newInterval) {
             const resp = await api.get(`symbols/get-history?interval=${this.interval}&symbol=${this.symbol}`) 
-            const resp2 = await api.get(`symbols_actions/get-my-symbols-actions?symbol=${this.symbol}`)
+            const resp2 = await this.getSymbolsActions(this.symbol)
             this.symbolChart = resp.data
-            this.$refs.chart.updateData(this.interval, resp.data, resp2.data)
+            this.$refs.chart.updateData(this.interval, resp.data, resp2)
         },
     },
 } 

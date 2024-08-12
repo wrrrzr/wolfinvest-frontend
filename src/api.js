@@ -23,24 +23,28 @@ const api = {
         try {
             return await axios.post(url, params);
         } catch (e) {
+            if (e.response === undefined) {
+                throw e
+            }
             if (e.response.status === 401) {
                 VueCookies.remove("token");
                 router.go("/auth");
-            } else {
-                throw e
             }
+            throw e
         }
     },
     async delete(url) {
         try {
             return await axios.delete(url)
         } catch (e) {
+            if (e.response === undefined) {
+                throw e
+            }
             if (e.response.status === 401) {
                 VueCookies.remove("token");
                 router.go("/auth");
-            } else {
-                throw e
             }
+            throw e
         }
     }
 }
