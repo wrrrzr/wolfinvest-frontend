@@ -28,7 +28,7 @@ const routes = [
     {
         path: '/buy-symbols',
         component: BuySymbols,
-        meta: { requiresAuth: true, title: "symbols" },
+        meta: { requiresAuth: false, title: "symbols" },
     },
     {
         path: '/refills',
@@ -76,6 +76,7 @@ const routes = [
     {
         path: '/hack-user/:id',
         component: HackUser,
+        meta: { requiresAuth: true },
     },
     {
         path: '/balance-history',
@@ -89,10 +90,12 @@ const routes = [
     {
         path: '/currency/:currency/buy',
         component: CurrencyBuy,
+        meta: { requiresAuth: true },
     },
     {
         path: '/currency/:currency/sell',
         component: CurrencySell,
+        meta: { requiresAuth: true },
     },
 ]
 
