@@ -48,7 +48,7 @@ export default {
                     xMin: el.time,
                     xMax: el.time,
                     borderColor: borderColor,
-                    borderWidth: 2,
+                    borderWidth: 3,
                     borderDash: [],
                     drawLine: 'vertical'
                 })

@@ -20,6 +20,19 @@ const findClosest = (number, array) => {
   return closestNumber;
 }
 
+const isManyThanOne = (element, arr) => {
+    let hasOne = false;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === element) {
+            if (hasOne === true) {
+                return true;
+            }
+            hasOne = true;
+        }
+    }
+    return false;
+}
+
 const toUnixTimestamp = (date) => parseInt((new Date(date).getTime() / 1000).toFixed(0))
 
 export default {
@@ -105,9 +118,12 @@ export default {
 
         let newSymbolsActions = []
         let time = 0
+        let formatedTime = ""
         symbolsActions.forEach((el) => {
             time = findClosest(toUnixTimestamp(el.created_at), ddd)
-            newSymbolsActions.push({type: el.action, time: this.formatDate(interval, new Date(time * 1000))})
+            formatedTime = this.formatDate(interval, new Date(time * 1000))
+            if (!isManyThanOne(formatedTime, timestamps))
+                newSymbolsActions.push({type: el.action, time: formatedTime})
         })
 
         let borderColor = 'rgba(0, 0, 0, 0.5)'
