@@ -35,8 +35,8 @@ export default {
             return this.$t(`reason.${reason}`).replace("%amount%", floatToCash(amount))
         },
     },
-    async mounted() {
-        await this.fetchData()
+    mounted() {
+        this.fetchData()
     },
 }
 </script>

@@ -9,7 +9,16 @@ export default {
         }
     },
     mutations: {
-        setData: (state, data) => { state.data = [].concat(data).reverse() },
+        setData: (state, data) => {
+            const newdata = []
+            for (const el of data) {
+                if (el.reason === 1) continue;
+                if (el.reason === 2) continue;
+                newdata.push(el)
+            }
+            newdata.reverse()
+            state.data = newdata
+        },
         trueCached: (state) => { state.cached = true },
     },
     actions: {
@@ -17,12 +26,12 @@ export default {
             if (state.cached) {
                 return
             }
-            const resp = await api.get("/balance_history/get-my-balance-history")
+            const resp = await api.get("/currency/get-currencies-history")
             commit("setData", resp.data)
             commit("trueCached")
         },
         async fetchBalanceHistoryWithoutCache({ state, commit }) {
-            const resp = await api.get("/balance_history/get-my-balance-history")
+            const resp = await api.get("/currency/get-currencies-history")
             commit("setData", resp.data)
             commit("trueCached")
         },
