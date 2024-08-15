@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /about
-Disallow: /buy-symbols
+Allow: /buy-symbols
 Disallow: /refills
 Disallow: /settings
+Disallow: /balance-history
