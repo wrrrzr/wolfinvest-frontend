@@ -1,11 +1,11 @@
 @media screen and (prefers-color-scheme: dark) {
     :root {
-        --ui-button-background-color: #2a2a3a;
-        --ui-button-color: #9b9b9b;
-        --ui-button-hover-background-color: #1a1a2a;
+        --ui-button-background-color: #600720;
+        --ui-button-color: #cacaca;
+        --ui-button-hover-background-color: #40040a;
 
-        --ui-input-background-color: #2a2a3a;
-        --ui-input-color: #9b9b9b;
+        --ui-input-background-color: #600720;
+        --ui-input-color: #cacaca;
 
         --ui-card-background-color: #757575;
         --ui-card-color: #000000;
@@ -20,26 +20,26 @@
         --page-user-notearn: #e03030;
     }
     body {
-        background-color: #18181a;
+        background-color: #23232f;
         color: #bababa;
     }
 }
 
 @media screen and (prefers-color-scheme: light) {
     :root {
-        --ui-button-background-color: #2a2a3a;
-        --ui-button-color: #9b9b9b;
-        --ui-button-hover-background-color: #1a1a2a;
+        --ui-button-background-color: #600720;
+        --ui-button-color: #cacaca;
+        --ui-button-hover-background-color: #40040a;
 
-        --ui-input-background-color: #2a2a3a;
-        --ui-input-color: #9b9b9b;
+        --ui-input-background-color: #600720;
+        --ui-input-color: #cacaca;
 
         --ui-card-background-color: #757575;
         --ui-card-color: #000000;
         --ui-card-hover-background-color: #909090;
 
         --ui-form-background: #708090;
-        --ui-form-color: #ffffff;
+        --ui-form-color: #000000;
 
         --ui-default-color: #bababa;
 
@@ -47,7 +47,7 @@
         --page-user-notearn: #e03030;
     }
     body {
-        background-color: #18181a;
+        background-color: #23232f;
         color: #bababa;
     }
 }
