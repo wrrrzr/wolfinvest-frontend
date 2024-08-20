@@ -4,7 +4,7 @@
     </div>
     <div v-else>
         <MyCard v-for="change in changes">
-            <p>{{ showText(change.reason, change.amount) }}</p>
+            <p>{{ showText(change) }}</p>
             <p>{{ formatDate(change.created_at) }}</p>
         </MyCard>
     </div>
@@ -31,8 +31,8 @@ export default {
         formatDate(date) {
             return new Date(date).toLocaleString(this.$t('localeString'))
         },
-        showText(reason, amount) {
-            return this.$t(`reason.${reason}`).replace("%amount%", floatToCash(amount))
+        showText(change) {
+            return this.$t(`reason.${change.reason}`).replace("%amount%", floatToCash(change.amount, change.ticker))
         },
     },
     mounted() {
