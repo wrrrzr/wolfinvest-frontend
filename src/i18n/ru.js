@@ -78,8 +78,8 @@ export default {
         "2": "неизвестно",
         "3": "вы купили валюты на %amount%",
         "4": "вы продали валюту и получили %amount%",
-        "5": "вы купили акций на %amount%",
-        "6": "вы продали акции и получили %amount%",
+        "5": "вы купили %symbol_amount% %symbol_ticker% на %amount%",
+        "6": "вы продали %symbol_amount% %symbol_ticker% и получили %amount%",
         "7": "вы пополнили баланс на %amount%",
     },
     "history_intervals": {

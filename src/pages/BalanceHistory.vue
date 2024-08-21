@@ -3,20 +3,16 @@
         <p style="font-size: 2.5em; margin-top: 0">{{ $t('no_balance_changes') }}</p>
     </div>
     <div v-else>
-        <MyCard v-for="change in changes">
-            <p>{{ showText(change) }}</p>
-            <p>{{ formatDate(change.created_at) }}</p>
-        </MyCard>
+        <BalanceChange v-for="change in this.changes" :change="change"/>
     </div>
 </template>
 <script>
 import {mapState, mapActions} from "vuex"
-import MyCard from "@/components/UI/MyCard"
-import {floatToCash} from "@/funcs"
+import BalanceChange from "@/components/BalanceChange"
 
 export default {
     components: {
-        MyCard,
+        BalanceChange,
     },
     computed: {
         ...mapState({
@@ -28,12 +24,6 @@ export default {
         ...mapActions({
             "fetchData": "balanceHistory/fetchData",
         }),
-        formatDate(date) {
-            return new Date(date).toLocaleString(this.$t('localeString'))
-        },
-        showText(change) {
-            return this.$t(`reason.${change.reason}`).replace("%amount%", floatToCash(change.amount, change.ticker))
-        },
     },
     mounted() {
         this.fetchData()

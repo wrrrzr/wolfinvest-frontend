@@ -78,8 +78,8 @@ export default {
         "2": "unknown",
         "3": "you bought %amount% worth of currency",
         "4": "you sold currency and get %amount%",
-        "5": "you bought %amount% worth of symbols",
-        "6": "you sold symbols and get %amount%",
+        "5": "you bought %amount% worth of %symbol_amount% %symbol_ticker%",
+        "6": "you sold %symbol_amount% %symbol_ticker% and get %amount%",
         "7": "replenishment in the amount of %amount%",
     },
     "history_intervals": {
