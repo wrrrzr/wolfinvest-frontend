@@ -11,8 +11,8 @@
 </template>
 <script>
 import {mapGetters} from "vuex"
-import MyButton from './UI/MyButton'
-import NavLink from "@/components/NavLink"
+import MyButton from "@/components/UI/MyButton"
+import NavLink from "./NavLink"
 
 export default {
     components: {

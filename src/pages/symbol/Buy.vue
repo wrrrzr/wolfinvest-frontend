@@ -84,13 +84,14 @@ export default {
         },
         floatToCash,
     },
-    async mounted() {
-        const resp = await api.get(`symbols/get-symbol?symbol=${this.symbol}`)
-        this.price = resp.data.price.buy
-        this.symbolName = resp.data.name
-        this.currency = resp.data.price.currency
-        setTitle(this.$t('purchase_symbol').replace("%name%", resp.data.name))
-        await this.fetchUser()
+    mounted() {
+        api.get(`symbols/get-symbol?symbol=${this.symbol}`).then(resp => {
+            this.price = resp.data.price.buy
+            this.symbolName = resp.data.name
+            this.currency = resp.data.price.currency
+            setTitle(this.$t('purchase_symbol').replace("%name%", resp.data.name))
+        })
+        this.fetchUser()
     }
 }
 </script>
