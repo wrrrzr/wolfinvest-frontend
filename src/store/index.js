@@ -5,6 +5,7 @@ import refillsModule from "./refillsModule"
 import adminModule from "./adminModule"
 import balanceHistoryModule from "./balanceHistoryModule"
 import currenciesModule from "./currenciesModule"
+import helperModule from "./helperModule"
 
 export default createStore({
     modules: {
@@ -14,5 +15,6 @@ export default createStore({
         admin: adminModule,
         balanceHistory: balanceHistoryModule,
         currencies: currenciesModule,
+        helper: helperModule,
     }
 })

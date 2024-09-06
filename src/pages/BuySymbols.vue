@@ -24,6 +24,7 @@
     <SymbolsRecommendations/>
 </template>
 <script>
+import { mapState, mapMutations } from "vuex"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import MyCard from "@/components/UI/MyCard"
@@ -31,6 +32,7 @@ import Symbol from "@/components/Symbol"
 import Link from "@/components/Link"
 import SymbolIcon from "@/components/SymbolIcon"
 import SymbolsRecommendations from "@/components/SymbolsRecommendations"
+import { helperState } from "@/helper"
 import api from "@/api"
 
 export default {
@@ -47,7 +49,15 @@ export default {
             symbolNotFound: false,
         }
     },
+    computed: {
+        ...mapState({
+            state: state => state.helper.state,
+        }),
+    },
     methods: {
+        ...mapMutations({
+            setHelperState: "helper/setHelperState",
+        }),
         selectTicker() {
             this.$router.push(`/symbol/${this.tickerName.toUpperCase()}`)
         },
@@ -81,6 +91,12 @@ export default {
             }
         }
     },
+    mounted() {
+        if (this.state === helperState.gotoSymbols) {
+            this.setHelperState(helperState.symbols)
+            setTimeout(() => { this.setHelperState(helperState.end) }, 3000)
+        }
+    }
 }
 </script>
 <style scoped>

@@ -43,6 +43,9 @@ export default {
     "sale_currency": "sale %name%",
     "vegan_companies": "vegan companies",
     "banks": "banks",
+    "helper": "helper",
+    "finish_tutorial": "finish tutorial",
+    "reset_tutorial": "reset tutorial",
     "navbar": {
         "home": "Home",
         "symbols": "Symbols",
@@ -51,6 +54,10 @@ export default {
         "balance_history": "History",
         "about": "About",
         "admin": "Admin"
+    },
+    "helper": {
+        "auth": "auth",
+        "goto_refills": "goto refills",
     },
     "alerts": {
         "only_numbers": "can only enter numbers",

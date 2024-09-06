@@ -7,9 +7,11 @@
     </MyForm>
 </template>
 <script>
+import { mapMutations } from "vuex"
 import MyButton from "@/components/UI/MyButton"
 import MyInput from "@/components/UI/MyInput"
 import MyForm from "@/components/UI/MyForm"
+import { helperState } from "@/helper"
 import api from "@/api"
 
 export default {
@@ -23,6 +25,9 @@ export default {
         }
     },
     methods: {
+        ...mapMutations({
+            setHelperState: "helper/setHelperState",
+        }),
         async register() {
             try {
                 await api.post("/auth/reg", { username: this.username, password: this.password })
@@ -49,6 +54,7 @@ export default {
         if (this.$cookies.isKey("token")) {
             this.$router.push('/')
         }
+        this.setHelperState(helperState.auth)
     }
 }
 </script>

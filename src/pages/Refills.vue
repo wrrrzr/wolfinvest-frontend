@@ -8,10 +8,11 @@
     </div>
 </template>
 <script>
-import { mapActions, mapGetters, mapState } from "vuex"
+import { mapActions, mapGetters, mapState, mapMutations } from "vuex"
 import MyInput from "@/components/UI/MyInput"
 import MyButton from "@/components/UI/MyButton"
 import Refill from "@/components/Refill"
+import { helperState } from "@/helper"
 import api from "@/api"
 
 export default {
@@ -26,6 +27,7 @@ export default {
     computed: {
         ...mapState({
             refills: state => state.refills.refills,
+            state: state => state.helper.state,
         }),
     },
     methods: {
@@ -35,6 +37,9 @@ export default {
             fetchUserWithoutCache: "user/fetchUserWithoutCache",
             fetchBalanceHistoryWithoutCache: "balanceHistory/fetchBalanceHistoryWithoutCache",
             fetchCurrenciesWithoutCache: "currencies/fetchCurrenciesWithoutCache",
+        }),
+        ...mapMutations({
+            setHelperState: "helper/setHelperState",
         }),
         async takeRefill() {
             if (this.amount === "") {
@@ -51,9 +56,15 @@ export default {
             this.fetchUserWithoutCache()
             this.fetchBalanceHistoryWithoutCache()
             this.fetchCurrenciesWithoutCache()
+            if (this.state === helperState.selectRefill) {
+                this.setHelperState(helperState.gotoSymbols)
+            }
         },
     },
     mounted() {
+        if (this.state === helperState.gotoRefills) {
+            this.setHelperState(helperState.selectRefill)
+        }
         this.fetchRefills()
     }
 }
