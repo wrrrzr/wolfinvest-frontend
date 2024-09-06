@@ -56,8 +56,12 @@ export default {
         "admin": "Admin"
     },
     "helper": {
-        "auth": "auth",
-        "goto_refills": "goto refills",
+        "auth": "pass",
+        "goto_refills": "pass",
+        "select_refill": "pass",
+        "goto_symbols": "pass",
+        "symbols": "pass",
+        "on_symbols": "pass",
     },
     "alerts": {
         "only_numbers": "can only enter numbers",

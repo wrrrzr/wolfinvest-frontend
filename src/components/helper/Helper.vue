@@ -1,6 +1,6 @@
 <template>
     <div v-if="isNotFinished && message !== ''" style="position: absolute; bottom: 0; display: flex">
-        <img src="/helper.png" :alt="$t('helper')" style="width: 16vw; height: 50vh;"/>
+        <img src="/helper.png" :alt="$t('helper')" style="width: 25vw; height: 50vh;"/>
         <div>
             <SpeechBubble style="">
                 <p>{{ $t(state) }}</p>
