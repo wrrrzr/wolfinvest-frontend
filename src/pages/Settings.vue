@@ -8,23 +8,36 @@
     </MyForm>
 </template>
 <script>
+import { mapState, mapMutations } from "vuex"
 import MyButton from "@/components/UI/MyButton"
 import MyForm from "@/components/UI/MyForm"
 import ChangeLang from "@/components/ChangeLang"
 import BtnLink from "@/components/BtnLink"
-import { finishTutorial, resetTutorial } from "@/helper"
+import { helperState } from "@/helper"
 
 export default {
     components: {
         MyButton, MyForm, ChangeLang, BtnLink,
     },
+    computed: {
+        ...mapState({
+            state: state => state.helper.state,
+        }),
+    },
     methods: {
+        ...mapMutations({
+            setHelperState: "helper/setHelperState",
+        }),
         exitFromAccount() {
             this.$cookies.remove("token")
             this.$router.go("/")
         },
-        finishTutorial,
-        resetTutorial,
+        finishTutorial() {
+            this.setHelperState(helperState.end)
+        },
+        resetTutorial() {
+            this.setHelperState(helperState.auth)
+        },
     },
 }
 </script>

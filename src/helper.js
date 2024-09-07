@@ -1,11 +1,3 @@
-export const finishTutorial = () => {
-    localStorage.setItem('helper', "end")
-}
-
-export const resetTutorial = () => {
-    localStorage.setItem('helper', "helper.auth")
-}
-
 export const helperState = {
     auth: "helper.auth",
     gotoRefills: "helper.goto_refills",
