@@ -1,8 +1,8 @@
 <template>
-    <div v-if="isNotFinished && message !== ''" style="position: absolute; bottom: 0; display: flex">
-        <img src="/helper.png" :alt="$t('helper')" style="width: 25vw; height: 50vh;"/>
+    <div v-if="isNotFinished && message !== ''" style="position: fixed; bottom: 0; display: flex; align-items: end; justify-content: end; pointer-events:none;">
+        <img src="/helper.png" :alt="$t('helper')" class="helper"/>
         <div>
-            <SpeechBubble style="">
+            <SpeechBubble class="bubble">
                 <p>{{ $t(state) }}</p>
             </SpeechBubble>
         </div>
@@ -35,3 +35,24 @@ export default {
     },
 }
 </script>
+<style scoped>
+@media (orientation: portrait) {
+    .helper {
+        width: 50vw;
+        height: 25vh;
+    }
+    .bubble {
+        font-size: 0.9em;
+    }
+}
+@media (orientation: landscape) {
+    .helper {
+        width: 25vw;
+        height: 50vh;
+    }
+    .bubble {
+        font-size: 1.5em;
+        margin-bottom: 20vh;
+    }
+}
+</style>
