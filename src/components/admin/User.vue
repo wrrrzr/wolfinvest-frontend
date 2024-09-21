@@ -1,21 +1,21 @@
 <template>
     <div style="display: grid">
         <Link :to="'/hack-user/' + user.id">
-            <MyCard>
+            <Card>
                 <p>{{ $t('id') }}: {{ user.id }}</p>
                 <p>{{ $t('username') }}: {{ user.username }}</p>
-            </MyCard>
+            </Card>
         </Link>
     </div>
 </template>
 <script>
-import MyCard from "@/components/UI/MyCard"
+import Card from "@/components/UI/Card"
 import Link from "@/components/Link"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyCard, Link,
+        Card, Link,
     },
     props: {
         user: {

@@ -1,7 +1,7 @@
 <template>
     <div class="get-refill">
-        <MyInput v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
-        <MyButton @click="takeRefill">{{ $t('take_refill') }}</MyButton>
+        <Input v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
+        <Button @click="takeRefill">{{ $t('take_refill') }}</Button>
     </div>
     <div>
         <Refill v-bind:value="refills" v-for="refill in refills" :amount="refill.amount" :time="refill.created_at"></Refill>
@@ -9,15 +9,15 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapState, mapMutations } from "vuex"
-import MyInput from "@/components/UI/MyInput"
-import MyButton from "@/components/UI/MyButton"
+import Input from "@/components/UI/Input"
+import Button from "@/components/UI/Button"
 import Refill from "@/components/Refill"
 import { helperState } from "@/helper"
 import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, Refill,
+        Input, Button, Refill,
     },
     data() {
         return {

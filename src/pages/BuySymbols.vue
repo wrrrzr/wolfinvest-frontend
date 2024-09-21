@@ -1,23 +1,23 @@
 <template>
     <div class="center" style="margin-bottom: 5px">
-        <MyInput v-bind:value="symbolName" @input="onInput" :placeholder="$t('symbol')"/>
+        <Input v-bind:value="symbolName" @input="onInput" :placeholder="$t('symbol')"/>
     </div>
     <div v-if="symbolNotFound">
     <div class="center" style="margin-bottom: 5px">
         <p>{{ $t('enter_ticker') }}</p>
     </div>
     <div class="center">
-        <MyInput v-bind:value="tickerName" @input="tickerName = $event.target.value" :placeholder="$t('ticker')"/>
-        <MyButton @click="selectTicker">{{ $t('select') }}</MyButton>
+        <Input v-bind:value="tickerName" @input="tickerName = $event.target.value" :placeholder="$t('ticker')"/>
+        <Button @click="selectTicker">{{ $t('select') }}</Button>
     </div>
     </div>
     <div class="center">
         <div style="display: grid">
             <Link v-for="i in tickers" :to="'/symbol/' + i.ticker">
-                <MyCard style="display: flex">
+                <Card style="display: flex">
                     <SymbolIcon :ticker="i.ticker" :name="i.name"/>
                     <p style="font-size: 1.5em; margin: 10px">{{ i.name }}</p>
-                </MyCard>
+                </Card>
             </Link>
         </div>
     </div>
@@ -25,9 +25,9 @@
 </template>
 <script>
 import { mapState, mapMutations } from "vuex"
-import MyInput from "@/components/UI/MyInput"
-import MyButton from "@/components/UI/MyButton"
-import MyCard from "@/components/UI/MyCard"
+import Input from "@/components/UI/Input"
+import Button from "@/components/UI/Button"
+import Card from "@/components/UI/Card"
 import Symbol from "@/components/Symbol"
 import Link from "@/components/Link"
 import SymbolIcon from "@/components/SymbolIcon"
@@ -37,7 +37,7 @@ import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, MyCard, Symbol, Link, SymbolIcon, SymbolsRecommendations,
+        Input, Button, Card, Symbol, Link, SymbolIcon, SymbolsRecommendations,
     },
     data() {
         return {

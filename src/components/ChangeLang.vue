@@ -1,16 +1,16 @@
 <template>
-    <MyButton @click="changeDisplay">{{ $t('language') }}</MyButton>
+    <Button @click="changeDisplay">{{ $t('language') }}</Button>
     <div :class="displayLangs ? 'display-true' : 'display-false'">
-        <MyButton @click="setLangEn" class="lang">english</MyButton>
-        <MyButton @click="setLangRu" class="lang">русский</MyButton>
+        <Button @click="setLangEn" class="lang">english</Button>
+        <Button @click="setLangRu" class="lang">русский</Button>
     </div>
 </template>
 <script>
-import MyButton from "@/components/UI/MyButton"
+import Button from "@/components/UI/Button"
 
 export default {
     components: {
-        MyButton,
+        Button,
     },
     data() {
         return {

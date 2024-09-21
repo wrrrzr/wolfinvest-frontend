@@ -1,17 +1,17 @@
 <template>
-    <MyCard>
+    <Card>
         <b>{{ $t('amount') }}: {{ floatToCash(amount) }}</b>
         <br>
         <b>{{ date }}</b>
-    </MyCard>
+    </Card>
 </template>
 <script>
-import MyCard from "@/components/UI/MyCard"
+import Card from "@/components/UI/Card"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyCard,
+        Card,
     },
     props: {
         amount: {

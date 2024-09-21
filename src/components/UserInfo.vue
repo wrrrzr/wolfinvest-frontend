@@ -1,5 +1,5 @@
 <template>
-    <MyCard style="text-align: center; font-size: 1.5em; font-family: sans-serif">
+    <Card style="text-align: center; font-size: 1.5em; font-family: sans-serif">
         <p><b>{{ username }}</b></p>
         <p>{{ $t('balance') }}: {{ floatToCash(balance) }}</p>
         <p>{{ $t('total') }}: {{ floatToCash(totalBalance) }}</p>
@@ -7,17 +7,17 @@
             <p :class="isEarn ? 'earn' : 'notearn'">{{ floatToCash(totalEarn.absolute) }} · {{ totalEarn.percent.toFixed(2) }}%</p>
             <p style="font-size: 0.9em">{{ $t('during_all_time') }}</p>
         </div>
-    </MyCard>
+    </Card>
 </template>
 <script>
-import MyCard from "@/components/UI/MyCard"
+import Card from "@/components/UI/Card"
 import { mapActions, mapState } from "vuex"
 import { floatToCash } from "@/funcs"
 import api from "@/api"
 
 export default {
     components: {
-        MyCard,
+        Card,
     },
     data() {
         return {

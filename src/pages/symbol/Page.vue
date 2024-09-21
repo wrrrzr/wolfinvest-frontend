@@ -2,7 +2,7 @@
     <p v-if="notFound" style="font-size: 5em">{{ $t('symbol_not_found') }}</p>
     <div v-else>
     <div style="display: flex; justify-content: center; align-items: center">
-    <MyCard style="display: inline-grid">
+    <Card style="display: inline-grid">
         <div style="display: flex">
             <SymbolIcon :ticker="symbol" :name="symbolName"/>
             <div>
@@ -10,24 +10,24 @@
                 <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price, currency) }}</p>
             </div>
         </div>
-    </MyCard>
+    </Card>
     </div>
-    <MyPanel>
-    <MyButton @click="m5">{{ $t('history_intervals.1d') }}</MyButton>
-    <MyButton @click="h1">{{ $t('history_intervals.1wk') }}</MyButton>
-    <MyButton @click="d1">{{ $t('history_intervals.1mo') }}</MyButton>
-    <MyButton @click="wk1">{{ $t('history_intervals.3mo') }}</MyButton>
-    <MyButton @click="mo1">{{ $t('history_intervals.1y') }}</MyButton>
-    <MyButton @click="mo3">{{ $t('history_intervals.alltime') }}</MyButton>
-    </MyPanel>
+    <Panel>
+    <Button @click="m5">{{ $t('history_intervals.1d') }}</Button>
+    <Button @click="h1">{{ $t('history_intervals.1wk') }}</Button>
+    <Button @click="d1">{{ $t('history_intervals.1mo') }}</Button>
+    <Button @click="wk1">{{ $t('history_intervals.3mo') }}</Button>
+    <Button @click="mo1">{{ $t('history_intervals.1y') }}</Button>
+    <Button @click="mo3">{{ $t('history_intervals.alltime') }}</Button>
+    </Panel>
     <div class="chart">
         <Chart ref="chart"/>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
             <div style="display: flex">
-                <MyButton class="buy-button" @click="buySymbol">{{ $t('buy') }}</MyButton>
-                <MyButton class="sell-button" @click="sellSymbol">{{ $t('sell') }}</MyButton>
+                <Button class="buy-button" @click="buySymbol">{{ $t('buy') }}</Button>
+                <Button class="sell-button" @click="sellSymbol">{{ $t('sell') }}</Button>
             </div>
         </div>
     </div>
@@ -35,10 +35,10 @@
 </template>
 <script>
 import { mapActions } from "vuex"
-import MyInput from "@/components/UI/MyInput"
-import MyButton from "@/components/UI/MyButton"
-import MyPanel from "@/components/UI/MyPanel"
-import MyCard from "@/components/UI/MyCard"
+import Input from "@/components/UI/Input"
+import Button from "@/components/UI/Button"
+import Panel from "@/components/UI/Panel"
+import Card from "@/components/UI/Card"
 import Chart from "@/components/Chart"
 import SymbolIcon from "@/components/SymbolIcon"
 import api from "@/api"
@@ -46,7 +46,7 @@ import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
-        MyInput, MyButton, MyPanel, Chart, MyCard, SymbolIcon,
+        Input, Button, Panel, Chart, Card, SymbolIcon,
     },
     data() {
         return {

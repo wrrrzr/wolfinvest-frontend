@@ -11,12 +11,12 @@
 </template>
 <script>
 import {mapGetters} from "vuex"
-import MyButton from "@/components/UI/MyButton"
+import Button from "@/components/UI/Button"
 import NavLink from "./NavLink"
 
 export default {
     components: {
-        MyButton, NavLink,
+        Button, NavLink,
     },
     data() {
         return {

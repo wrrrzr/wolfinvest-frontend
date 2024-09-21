@@ -1,6 +1,6 @@
 <template>
     <Link :to="'/symbol/' + code">
-        <MyCard>
+        <Card>
             <div style="display: inline-flex">
                 <SymbolIcon :ticker="code" :name="symbolName" style="margin-left: 5px; margin-right: 10px"/>
                 <div>
@@ -12,18 +12,18 @@
                     </div>
                 </div>
             </div>
-        </MyCard>
+        </Card>
     </Link>
 </template>
 <script>
-import MyCard from "@/components/UI/MyCard"
+import Card from "@/components/UI/Card"
 import SymbolIcon from "@/components/SymbolIcon"
 import Link from "@/components/Link"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyCard, Link, SymbolIcon,
+        Card, Link, SymbolIcon,
     },
     props: {
         name: {

@@ -1,26 +1,26 @@
 <template>
-    <MyForm>
-    <MyCard>
+    <Form>
+    <Card>
         <p>{{ symbolName }}</p>
         <p>{{ $t('price_buy') }}: {{ floatToCash(price, currency) }}</p>
-    </MyCard>
+    </Card>
     <p style="font-size: 1.5em; margin: 5px">{{ $t('avaible_to_buy') }} {{ avaibleToBuy }}</p>
-    <MyInput v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
-    <MyButton @click="buySymbol">{{ $t('buy') }}</MyButton>
-    </MyForm>
+    <Input v-bind:value="amount" @input="amount = $event.target.value" :placeholder="$t('amount')" type="number"/>
+    <Button @click="buySymbol">{{ $t('buy') }}</Button>
+    </Form>
 </template>
 <script>
 import { mapActions, mapState } from "vuex"
-import MyCard from "@/components/UI/MyCard"
-import MyInput from "@/components/UI/MyInput"
-import MyButton from "@/components/UI/MyButton"
-import MyForm from "@/components/UI/MyForm"
+import Card from "@/components/UI/Card"
+import Input from "@/components/UI/Input"
+import Button from "@/components/UI/Button"
+import Form from "@/components/UI/Form"
 import api from "@/api"
 import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
-        MyCard, MyInput, MyButton, MyForm,
+        Card, Input, Button, Form,
     },
     data() {
         return {

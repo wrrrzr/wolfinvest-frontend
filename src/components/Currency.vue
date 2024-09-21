@@ -1,6 +1,6 @@
 <template>
     <div v-if="ticker === 'USD'">
-        <MyCard>
+        <Card>
             <div style="display: inline-flex">
                 <CurrencyIcon :ticker="ticker" :name="name" style="margin-left: 5px; margin-right: 10px"/>
                 <div>
@@ -8,11 +8,11 @@
                     <p style="user-select: none">{{ $t('amount') }}: {{ floatToCash(amount, ticker) }}</p>
                 </div>
             </div>
-        </MyCard>
+        </Card>
     </div>
     <div v-else>
     <Link :to="'/currency/' + ticker">
-        <MyCard>
+        <Card>
             <div style="display: inline-flex">
                 <CurrencyIcon :ticker="ticker" :name="name" style="margin-left: 5px; margin-right: 10px"/>
                 <div>
@@ -20,19 +20,19 @@
                     <p style="user-select: none">{{ $t('amount') }}: {{ floatToCash(amount, ticker) }}</p>
                 </div>
             </div>
-        </MyCard>
+        </Card>
     </Link>
     </div>
 </template>
 <script>
-import MyCard from "@/components/UI/MyCard"
+import Card from "@/components/UI/Card"
 import Link from "@/components/Link"
 import CurrencyIcon from "@/components/CurrencyIcon"
 import { floatToCash } from "@/funcs"
 
 export default {
     components: {
-        MyCard, Link, CurrencyIcon,
+        Card, Link, CurrencyIcon,
     },
     props: {
         ticker: {

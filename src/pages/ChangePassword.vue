@@ -1,20 +1,20 @@
 <template>
-    <MyForm>
-        <MyInput v-bind:value="oldPassword" @input="oldPassword = $event.target.value" :placeholder="$t('old_password')"/>
-        <MyInput v-bind:value="newPassword" @input="newPassword = $event.target.value" :placeholder="$t('new_password')"/>
-        <MyInput v-bind:value="confirmPassword" @input="confirmPassword = $event.target.value" :placeholder="$t('confirm_password')"/>
-        <MyButton @click="changePassword">{{ $t('change_password') }}</MyButton>
-    </MyForm>
+    <Form>
+        <Input v-bind:value="oldPassword" @input="oldPassword = $event.target.value" :placeholder="$t('old_password')"/>
+        <Input v-bind:value="newPassword" @input="newPassword = $event.target.value" :placeholder="$t('new_password')"/>
+        <Input v-bind:value="confirmPassword" @input="confirmPassword = $event.target.value" :placeholder="$t('confirm_password')"/>
+        <Button @click="changePassword">{{ $t('change_password') }}</Button>
+    </Form>
 </template>
 <script>
-import MyInput from "@/components/UI/MyInput"
-import MyButton from "@/components/UI/MyButton"
-import MyForm from "@/components/UI/MyForm"
+import Input from "@/components/UI/Input"
+import Button from "@/components/UI/Button"
+import Form from "@/components/UI/Form"
 import api from "@/api"
 
 export default {
     components: {
-        MyInput, MyButton, MyForm,
+        Input, Button, Form,
     },
     data() {
         return {

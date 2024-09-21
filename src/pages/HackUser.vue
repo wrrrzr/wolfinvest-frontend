@@ -1,22 +1,22 @@
 <template>
-    <MyForm>
+    <Form>
         <div>
-            <MyInput v-bind:value="newPassword" @input="newPassword = $event.target.value" :placeholder="$t('password')"/>
-            <MyButton @click="setPassword">{{ $t('set_password') }}</MyButton>
+            <Input v-bind:value="newPassword" @input="newPassword = $event.target.value" :placeholder="$t('password')"/>
+            <Button @click="setPassword">{{ $t('set_password') }}</Button>
         </div>
-        <MyButton @click="deleteUser" class="red-button">{{ $t('delete') }}!!!</MyButton>
-    </MyForm>
+        <Button @click="deleteUser" class="red-button">{{ $t('delete') }}!!!</Button>
+    </Form>
 </template>
 <script>
 import {mapActions} from "vuex"
-import MyForm from "@/components/UI/MyForm"
-import MyButton from "@/components/UI/MyButton"
-import MyInput from "@/components/UI/MyInput"
+import Form from "@/components/UI/Form"
+import Button from "@/components/UI/Button"
+import Input from "@/components/UI/Input"
 import api from "@/api"
 
 export default {
     components: {
-        MyForm, MyButton, MyInput,
+        Form, Button, Input,
     },
     data() {
         return {

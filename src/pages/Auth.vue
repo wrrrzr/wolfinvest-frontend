@@ -1,22 +1,22 @@
 <template>
-    <MyForm>
-    <MyInput v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" :placeholder="$t('username')"/>
-        <MyInput v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" :placeholder="$t('password')" type="password"/>
-        <MyButton @click="login" style="margin-bottom: 10px">{{ $t('log_in') }}</MyButton>
-        <MyButton @click="register">{{ $t('register') }}</MyButton>
-    </MyForm>
+    <Form>
+    <Input v-bind:value="username" @input="username = $event.target.value" style="margin-bottom: 10px" :placeholder="$t('username')"/>
+        <Input v-bind:value="password" @input="password = $event.target.value" style="margin-bottom: 20px" :placeholder="$t('password')" type="password"/>
+        <Button @click="login" style="margin-bottom: 10px">{{ $t('log_in') }}</Button>
+        <Button @click="register">{{ $t('register') }}</Button>
+    </Form>
 </template>
 <script>
 import { mapMutations } from "vuex"
-import MyButton from "@/components/UI/MyButton"
-import MyInput from "@/components/UI/MyInput"
-import MyForm from "@/components/UI/MyForm"
+import Button from "@/components/UI/Button"
+import Input from "@/components/UI/Input"
+import Form from "@/components/UI/Form"
 import { helperState } from "@/helper"
 import api from "@/api"
 
 export default {
     components: {
-        MyButton, MyInput, MyForm,
+        Button, Input, Form,
     },
     data() {
         return {

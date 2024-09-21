@@ -1,16 +1,16 @@
 <template>
-    <MyCard>
+    <Card>
         <p>{{ showText(change) }}</p>
         <p>{{ formatDate(change.created_at) }}</p>
-    </MyCard>
+    </Card>
 </template>
 <script>
-import MyCard from "@/components/UI/MyCard"
+import Card from "@/components/UI/Card"
 import {CurrencyReason, floatToCash} from "@/funcs"
 
 export default {
     components: {
-        MyCard,
+        Card,
     },
     props: {
         change: {

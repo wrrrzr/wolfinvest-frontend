@@ -1,6 +1,6 @@
 <template>
     <div style="display: flex; justify-content: center; align-items: center">
-    <MyCard style="display: inline-grid">
+    <Card style="display: inline-grid">
         <div style="display: flex">
             <CurrencyIcon :ticker="currency" :name="currencyName" style="margin-left: 5px; margin-right: 10px"/>
             <div>
@@ -8,28 +8,28 @@
                 <p style="margin-top: 0; font-size: 1.5em">{{ $t('price') }} {{ floatToCash(price) }}</p>
             </div>
         </div>
-    </MyCard>
+    </Card>
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
         <div style="display: grid; width: 100%">
             <div style="display: flex">
-                <MyButton class="buy-button" @click="buySymbol">{{ $t('buy') }}</MyButton>
-                <MyButton class="sell-button" @click="sellSymbol">{{ $t('sell') }}</MyButton>
+                <Button class="buy-button" @click="buySymbol">{{ $t('buy') }}</Button>
+                <Button class="sell-button" @click="sellSymbol">{{ $t('sell') }}</Button>
             </div>
         </div>
     </div>
 </template>
 <script>
-import MyInput from "@/components/UI/MyInput"
-import MyCard from "@/components/UI/MyCard"
-import MyButton from "@/components/UI/MyButton"
+import Input from "@/components/UI/Input"
+import Card from "@/components/UI/Card"
+import Button from "@/components/UI/Button"
 import CurrencyIcon from "@/components/CurrencyIcon"
 import api from "@/api"
 import { floatToCash, setTitle } from "@/funcs"
 
 export default {
     components: {
-        MyInput, MyCard, MyButton, CurrencyIcon
+        Input, Card, Button, CurrencyIcon
     },
     data() {
         return {

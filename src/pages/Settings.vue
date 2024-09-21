@@ -1,23 +1,23 @@
 <template>
-    <MyForm>
+    <Form>
         <ChangeLang/>
         <BtnLink :to="'/change-password'">{{ $t('change_password') }}</BtnLink>
-        <MyButton @click="finishTutorial">{{ $t('finish_tutorial') }}</MyButton>
-        <MyButton @click="resetTutorial">{{ $t('reset_tutorial') }}</MyButton>
-        <MyButton @click="exitFromAccount">{{ $t('log_out') }}</MyButton>
-    </MyForm>
+        <Button @click="finishTutorial">{{ $t('finish_tutorial') }}</Button>
+        <Button @click="resetTutorial">{{ $t('reset_tutorial') }}</Button>
+        <Button @click="exitFromAccount">{{ $t('log_out') }}</Button>
+    </Form>
 </template>
 <script>
 import { mapState, mapMutations } from "vuex"
-import MyButton from "@/components/UI/MyButton"
-import MyForm from "@/components/UI/MyForm"
+import Button from "@/components/UI/Button"
+import Form from "@/components/UI/Form"
 import ChangeLang from "@/components/ChangeLang"
 import BtnLink from "@/components/BtnLink"
 import { helperState } from "@/helper"
 
 export default {
     components: {
-        MyButton, MyForm, ChangeLang, BtnLink,
+        Button, Form, ChangeLang, BtnLink,
     },
     computed: {
         ...mapState({
